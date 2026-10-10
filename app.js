@@ -119,18 +119,47 @@
   $("#modalClose")?.addEventListener("click",closeAsset);
   modal?.addEventListener("click",e=>{if(e.target===modal)closeAsset()});
   function svgFor(a) {
-    let shapes = "";
-    if (a.kind==="shape") shapes='<circle cx="150" cy="120" r="68" fill="#888"/><rect x="270" y="55" width="110" height="240" rx="55" fill="#292927" transform="rotate(13 325 175)"/><circle cx="240" cy="175" r="100" fill="none" stroke="#eee" stroke-width="26"/>';
-    else if (a.kind==="orbit") shapes='<g fill="none" stroke="#eee" stroke-width="2"><ellipse cx="250" cy="180" rx="160" ry="65" transform="rotate(-35 250 180)"/><ellipse cx="250" cy="180" rx="160" ry="65" transform="rotate(35 250 180)"/><ellipse cx="250" cy="180" rx="160" ry="65" transform="rotate(90 250 180)"/></g><circle cx="250" cy="180" r="47" fill="#777"/>';
-    else if (a.kind==="type") shapes='<text x="250" y="220" font-family="Arial,sans-serif" font-size="170" text-anchor="middle" fill="#222">Aa</text><text x="365" y="145" font-family="Arial,sans-serif" font-size="90" font-weight="bold" fill="#777">!</text>';
-    else if (a.kind==="ui") shapes='<rect x="55" y="40" width="390" height="280" rx="8" fill="#f7f7f5"/><text x="85" y="85" font-family="Arial,sans-serif" font-size="13" fill="#777">YOUR SPACE, YOUR PACE</text><text x="85" y="145" font-family="Arial,sans-serif" font-size="35" font-weight="bold" fill="#181818">Make room</text><text x="85" y="185" font-family="Arial,sans-serif" font-size="35" font-weight="bold" fill="#181818">for ideas.</text><rect x="85" y="225" width="120" height="35" rx="18" fill="#181818"/>';
-    else if (a.kind==="grid") shapes='<path d="M75 30V330M175 30V330M275 30V330M375 30V330M25 90H475M25 170H475M25 250H475" stroke="#aaa" fill="none"/><circle cx="270" cy="170" r="75" fill="#333"/>';
-    else if (a.kind==="soft"||a.kind==="fields") shapes='<circle cx="170" cy="170" r="120" fill="#aaa"/><circle cx="320" cy="210" r="92" fill="#666"/><circle cx="260" cy="115" r="62" fill="#eee"/>';
-    else if (a.kind==="lines") shapes=Array.from({length:11},(_,i)=>'<path d="M 0 '+(35+i*27)+' Q 250 '+(i%2?20:340)+' 500 '+(35+i*27)+'" stroke="#aaa" stroke-width="2" fill="none"/>').join("");
-    else if (a.kind==="icons") shapes=["＋","↗","○","✳","⌘","↘","□","×","⌕","↻","△","→"].map((t,i)=>'<text x="'+(80+(i%4)*115)+'" y="'+(105+Math.floor(i/4)*95)+'" text-anchor="middle" font-size="45" fill="#333">'+t+'</text>').join("");
-    else if (a.kind==="paper") shapes='<circle cx="160" cy="160" r="112" fill="#eee"/><path d="M290 300V150a75 75 0 01150 0v150z" fill="#777"/><path d="M130 90L350 280" stroke="#252523" stroke-width="45"/>';
-    else shapes='<text x="250" y="170" text-anchor="middle" font-family="Arial,sans-serif" font-size="44" font-weight="bold" fill="#222">'+a.title.replace(/&/g,"&amp;").replace(/</g,"&lt;")+'</text><text x="250" y="220" text-anchor="middle" font-family="monospace" font-size="14" fill="#555">OPENFORM / SAMPLE STUDY</text>';
-    return '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 360"><rect width="500" height="360" fill="#dcdcd6"/>'+shapes+'</svg>';
+    const palette = {
+      paper: "#F5F3ED", ink: "#1B1B19", blue: "#4646E8",
+      coral: "#F35D43", acid: "#C7F464", lavender: "#E4DFFB", white: "#FFFDF7"
+    };
+    let background = palette.paper, shapes = "";
+    if (a.kind === "shape") {
+      background = palette.acid;
+      shapes = '<circle cx="160" cy="155" r="112" fill="'+palette.paper+'"/><rect x="119" y="24" width="76" height="280" rx="38" fill="'+palette.coral+'" transform="rotate(34 157 164)"/><circle cx="328" cy="221" r="88" fill="none" stroke="'+palette.blue+'" stroke-width="27"/><circle cx="328" cy="221" r="18" fill="'+palette.paper+'"/>';
+    } else if (a.kind === "orbit") {
+      background = palette.ink;
+      shapes = '<g fill="none" stroke="'+palette.paper+'" stroke-width="2"><ellipse cx="250" cy="180" rx="160" ry="65" transform="rotate(-35 250 180)"/><ellipse cx="250" cy="180" rx="160" ry="65" transform="rotate(35 250 180)"/><ellipse cx="250" cy="180" rx="160" ry="65" transform="rotate(90 250 180)"/></g><circle cx="250" cy="180" r="49" fill="'+palette.blue+'"/><circle cx="250" cy="180" r="15" fill="'+palette.acid+'"/><circle cx="105" cy="135" r="12" fill="'+palette.coral+'"/><circle cx="350" cy="88" r="9" fill="'+palette.acid+'"/>';
+    } else if (a.kind === "type") {
+      background = palette.coral;
+      shapes = '<text x="218" y="224" font-family="Arial,sans-serif" font-size="178" font-weight="700" text-anchor="middle" letter-spacing="-18" fill="'+palette.paper+'">Aa</text><text x="377" y="137" font-family="Arial,sans-serif" font-size="105" font-weight="700" text-anchor="middle" fill="'+palette.acid+'">!</text><path d="M52 276H448" stroke="'+palette.ink+'" stroke-width="2"/><text x="52" y="306" font-family="monospace" font-size="12" letter-spacing="2" fill="'+palette.ink+'">TYPE / PLAY / REPEAT</text>';
+    } else if (a.kind === "ui") {
+      background = palette.blue;
+      shapes = '<rect x="45" y="35" width="410" height="290" rx="5" fill="'+palette.paper+'"/><circle cx="66" cy="56" r="4" fill="'+palette.coral+'"/><circle cx="80" cy="56" r="4" fill="'+palette.acid+'"/><circle cx="94" cy="56" r="4" fill="'+palette.blue+'"/><path d="M45 72H455" stroke="#D6D4CC"/><text x="78" y="110" font-family="monospace" font-size="11" fill="#74746D">YOUR SPACE, YOUR PACE</text><text x="78" y="163" font-family="Arial,sans-serif" font-size="39" font-weight="700" letter-spacing="-2" fill="'+palette.ink+'">Make room</text><text x="78" y="207" font-family="Arial,sans-serif" font-size="39" font-weight="700" letter-spacing="-2" fill="'+palette.ink+'">for ideas.</text><rect x="78" y="247" width="142" height="40" rx="3" fill="'+palette.ink+'"/><text x="94" y="272" font-family="Arial,sans-serif" font-size="12" fill="'+palette.paper+'">Get started ↗</text>';
+    } else if (a.kind === "grid") {
+      background = palette.paper;
+      shapes = '<g stroke="#C8C5BB" stroke-width="1">'+Array.from({length:8},(_,i)=>'<path d="M'+(30+i*63)+' 25V335"/>').join("")+Array.from({length:5},(_,i)=>'<path d="M25 '+(42+i*68)+'H475"/>').join("")+'</g><circle cx="272" cy="167" r="83" fill="'+palette.acid+'"/><path d="M272 84V250M189 167H355" stroke="'+palette.blue+'" stroke-width="3"/><path d="M210 107L334 231" stroke="'+palette.coral+'" stroke-width="18"/>';
+    } else if (a.kind === "soft" || a.kind === "fields") {
+      background = a.kind === "soft" ? palette.blue : palette.lavender;
+      shapes = '<circle cx="155" cy="157" r="122" fill="'+palette.coral+'"/><circle cx="337" cy="219" r="110" fill="'+palette.acid+'"/><circle cx="274" cy="106" r="63" fill="'+palette.paper+'" opacity=".93"/><path d="M40 288Q145 241 226 302T470 288" fill="none" stroke="'+palette.ink+'" stroke-width="3"/><text x="32" y="43" font-family="monospace" font-size="10" letter-spacing="2" fill="'+(a.kind === "soft" ? palette.paper : palette.ink)+'">FIELD STUDY / 04</text>';
+    } else if (a.kind === "lines") {
+      background = palette.ink;
+      shapes = Array.from({length:12},(_,i)=>'<path d="M-20 '+(24+i*27)+' C90 '+(i%2?30:185)+', 180 '+(i%3?290:110)+', 295 '+(40+i*24)+' S420 '+(80+i*19)+', 530 '+(15+i*28)+'" fill="none" stroke="'+(i%3===0?palette.coral:i%3===1?palette.acid:palette.paper)+'" stroke-width="'+(i%4===0?4:1.5)+'" opacity="'+(.64+i*.025)+'"/>').join("");
+    } else if (a.kind === "icons") {
+      background = palette.acid;
+      shapes = ["＋","↗","○","✳","⌘","↘","□","×","⌕","↻","△","→"].map((t,i)=>'<rect x="'+(35+(i%4)*110)+'" y="'+(44+Math.floor(i/4)*91)+'" width="84" height="68" rx="2" fill="'+(i%3===0?palette.coral:i%3===1?palette.blue:palette.paper)+'"/><text x="'+(77+(i%4)*110)+'" y="'+(91+Math.floor(i/4)*91)+'" font-family="Arial,sans-serif" font-size="36" text-anchor="middle" fill="'+(i%3===1?palette.paper:palette.ink)+'">'+t+'</text>').join("");
+    } else if (a.kind === "paper") {
+      background = palette.lavender;
+      shapes = '<circle cx="150" cy="155" r="112" fill="'+palette.acid+'"/><path d="M290 300V146a77 77 0 01154 0v154z" fill="'+palette.coral+'"/><path d="M128 80L358 285" stroke="'+palette.blue+'" stroke-width="48"/><circle cx="352" cy="87" r="24" fill="'+palette.paper+'"/>';
+    } else if (a.kind === "kinetic") {
+      background = palette.acid;
+      shapes = '<text x="38" y="140" font-family="Arial,sans-serif" font-size="66" font-weight="700" letter-spacing="-4" fill="'+palette.ink+'">MOVE</text><text x="38" y="202" font-family="Arial,sans-serif" font-size="66" font-weight="700" letter-spacing="-4" fill="none" stroke="'+palette.blue+'" stroke-width="2">WITH</text><text x="38" y="264" font-family="Arial,sans-serif" font-size="66" font-weight="700" letter-spacing="-4" fill="'+palette.coral+'">INTENT.</text><path d="M38 288H463" stroke="'+palette.ink+'" stroke-width="2"/>';
+    } else {
+      const safeTitle = a.title.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");
+      background = palette.coral;
+      shapes = '<text x="250" y="165" text-anchor="middle" font-family="Arial,sans-serif" font-size="42" font-weight="700" letter-spacing="-2" fill="'+palette.paper+'">'+safeTitle+'</text><path d="M80 198H420" stroke="'+palette.acid+'" stroke-width="10"/><text x="250" y="245" text-anchor="middle" font-family="monospace" font-size="14" letter-spacing="2" fill="'+palette.ink+'">OPENFORM / SAMPLE STUDY</text>';
+    }
+    return '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 360" role="img" aria-label="'+a.title.replace(/&/g,"&amp;").replace(/"/g,"&quot;")+' sample artwork"><rect width="500" height="360" fill="'+background+'"/>'+shapes+'</svg>';
   }
   $("#downloadButton")?.addEventListener("click",()=>{
     const a=assets.find(x=>x.id===modal?.dataset.assetId);if(!a)return;
