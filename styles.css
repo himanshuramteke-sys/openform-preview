@@ -235,3 +235,14 @@ body.dark{--bg:#191919;--paper:#242422;--ink:#f5f3ed;--muted:#aaa99f;--line:#424
  .asset-preview{aspect-ratio:1}
  .asset-meta h3{font-size:13px}
 }
+
+/* Ambient motion is intentionally subtle and respects reduced-motion preferences. */
+.piece-shape{translate:0 0;animation:art-drift-a 7.5s ease-in-out infinite alternate}
+.piece-type{translate:0 0;animation:art-drift-b 8.5s ease-in-out infinite alternate}
+.piece-blue{translate:0 0;animation:art-drift-c 9s ease-in-out infinite alternate}
+.art-sticker{animation:sticker-bob 6s ease-in-out infinite alternate}
+@keyframes art-drift-a{to{translate:-2px -6px}}
+@keyframes art-drift-b{to{translate:3px 5px}}
+@keyframes art-drift-c{to{translate:0 -5px}}
+@keyframes sticker-bob{to{translate:1px -5px;rotate:5deg}}
+@media(prefers-reduced-motion:reduce){.piece-shape,.piece-type,.piece-blue,.art-sticker{animation:none!important}}
