@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#f7f7f4"><title>Library — Openform</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,500;1,600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css"><script src="app.js" defer></script>
+</head>
+<body class="library-page">
+<div class="grain" aria-hidden="true"></div>
+<header class="site-header">
+  <a class="wordmark" href="index.html" aria-label="Openform home"><span class="mark">o</span>openform<span class="wordmark-dot">.</span></a>
+  <nav class="main-nav" aria-label="Main navigation"><a href="index.html">Home</a><a class="nav-active" href="library.html" aria-current="page">Library <span class="nav-count">012</span></a><a href="index.html#about">About</a></nav>
+  <div class="header-actions"><span class="free-note"><i></i> Sample resources</span><button class="theme-toggle" id="themeToggle" type="button" aria-label="Toggle dark mode" title="Toggle theme" aria-pressed="false"><span class="theme-icon">◐</span></button><a class="header-cta" href="#assetGrid">Browse resources <span>↓</span></a><button class="mobile-menu" id="mobileMenu" type="button" aria-label="Open navigation" aria-expanded="false">☰</button></div>
+</header>
+<main class="library-main">
+  <div class="library-intro"><div><div class="hero-topline"><span>THE LIBRARY</span><span class="hero-index">012 / SAMPLE INDEX</span></div><h1>A library for<br><em>making things.</em></h1></div><p>Useful bits, visual sparks, and tools worth keeping in reach. Browse freely, take what you need, make something good.</p></div>
+  <div class="library-controls"><label class="search-box"><span aria-hidden="true">⌕</span><input id="searchInput" type="search" placeholder="Search the collection…" aria-label="Search assets"><kbd>/</kbd><button id="clearSearch" type="button" aria-label="Clear search">×</button></label><div class="sort-wrap"><label for="sortSelect">SORT</label><select id="sortSelect"><option value="featured">Curated</option><option value="az">A — Z</option><option value="type">Type</option></select></div></div>
+  <div class="filter-row" id="filterRow" aria-label="Filter by category"><button class="filter-chip active" type="button" data-filter="All" aria-pressed="true">All <span>12</span></button><button class="filter-chip" type="button" data-filter="Illustration" aria-pressed="false">Illustration <span>3</span></button><button class="filter-chip" type="button" data-filter="Background" aria-pressed="false">Backgrounds <span>3</span></button><button class="filter-chip" type="button" data-filter="Typography" aria-pressed="false">Typography <span>2</span></button><button class="filter-chip" type="button" data-filter="UI" aria-pressed="false">UI & Components <span>2</span></button><button class="filter-chip" type="button" data-filter="Motion" aria-pressed="false">Motion <span>2</span></button><span class="filter-status" id="filterStatus">12 resources</span></div>
+  <div class="library-rule"><span>THE COLLECTION</span><span id="collectionCount">12 RESOURCES</span></div><section class="asset-grid" id="assetGrid" aria-live="polite"></section>
+  <div class="empty-state" id="emptyState" hidden><span>✳</span><h2>Nothing in this corner.</h2><p>Try a different search or category.</p><button class="pill-link" id="resetFilters" type="button">Reset filters ↗</button></div>
+  <div class="library-end"><span>YOU'VE REACHED THE END (FOR NOW)</span><a href="index.html">Back to the beginning ↑</a></div>
+</main>
+<footer class="site-footer"><a class="wordmark" href="index.html"><span class="mark">o</span>openform<span class="wordmark-dot">.</span></a><span>A small archive for big ideas.</span><a href="index.html#about">Why this exists ↗</a><span class="footer-year">PROTOTYPE / 2026</span></footer>
+<div class="modal-backdrop" id="assetModal" aria-hidden="true"><section class="asset-modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle"><button class="modal-close" id="modalClose" type="button" aria-label="Close asset details">×</button><div class="modal-preview" id="modalPreview"></div><div class="modal-info"><div class="modal-eyebrow" id="modalEyebrow"></div><h2 id="modalTitle"></h2><p id="modalDescription"></p><div class="modal-tags" id="modalTags"></div><div class="modal-actions"><button id="downloadButton" class="pill-link" type="button">Download sample <span>↓</span></button><button id="copyButton" class="secondary-button" type="button">Copy source SVG</button></div><p class="modal-note" id="modalNote">Prototype assets are original sample compositions. They are free to experiment with.</p></div></section></div>
+</body></html>
