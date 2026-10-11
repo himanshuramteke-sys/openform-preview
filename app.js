@@ -78,7 +78,7 @@
     if (empty) empty.hidden = list.length > 0;
     grid.hidden = list.length === 0;
     if (clear) clear.style.display = query ? "grid" : "none";
-    $(".filter-chip, .sidebar-filter").forEach(b=>{const active=b.dataset.filter===activeFilter;b.setAttribute("aria-pressed",String(active));b.classList.toggle("is-active",active);b.classList.toggle("active",active);});
+    $$(".filter-chip, .sidebar-filter").forEach(b=>{const active=b.dataset.filter===activeFilter;b.setAttribute("aria-pressed",String(active));b.classList.toggle("is-active",active);b.classList.toggle("active",active);});
   }
   function openAsset(id) {
     const a = assets.find(x=>x.id===id);
