@@ -74,3 +74,10 @@ Openform is an open, community-first index of useful design resources and visual
 - A procedural animated, heat-map-like gradient field replaces the earlier soft static gradient. It changes palette with the theme, has restrained contour/grid detail, and respects reduced-motion settings.
 - The library remains a quiet, image-first masonry archive with category chips, search, sorting, and visible artwork.
 - The footer now follows an Outway-inspired information architecture: a closing statement/CTA, clear navigation groups, community status, and a concise legal/meta rail. It adapts the structure for Openform and avoids a fake newsletter form when no signup backend exists.
+
+
+## 0.5 — Interface refinement
+- Removed decorative section numbers and serial labels. Category badges show plain counts rather than padded sequence numbers.
+- Raised non-headline interface and metadata typography by approximately 2 CSS pixels. Display/headline sizes remain unchanged.
+- Increased section separation, card gaps, and footer breathing room while retaining the image-first density of the library.
+- Adopted Mage Icons stroke SVGs for navigation and interface actions. The selected icons are used as CSS masks so they inherit current text colour in light and dark themes. Sources are linked from the official [Mage Icons repository](https://github.com/Mage-Icons/mage-icons), licensed under Apache 2.0.

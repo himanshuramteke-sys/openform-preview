@@ -8,7 +8,7 @@
     const dark = document.body.classList.contains("dark");
     themeButtons.forEach(button => {
       const icon = $(".theme-icon", button);
-      if (icon) icon.textContent = dark ? "☼" : "◐";
+      if (icon) icon.innerHTML = '<span class="mi mi-' + (dark ? "sun" : "moon") + '" aria-hidden="true"></span>';
       button.setAttribute("aria-pressed", String(dark));
       button.setAttribute("aria-label", dark ? "Switch to light theme" : "Switch to dark theme");
     });
@@ -33,7 +33,7 @@
     {id:"type-play",title:"Type play",category:"Typography",format:"SVG",tags:["Typography","Display","Experiment"],description:"A typographic experiment made to be remixed into posters, covers, and digital compositions.",kind:"type"},
     {id:"orbit-study",title:"Orbit study",category:"Illustration",format:"SVG",tags:["SVG","Illustration","Abstract"],description:"An abstract orbit illustration built from editable vector paths and circles.",kind:"orbit"},
     {id:"daily-ui",title:"Daily dashboard concept",category:"UI",format:"SVG",tags:["UI","Dashboard","Layout"],description:"A compact dashboard concept with hierarchy, navigation, and a simple action pattern.",kind:"ui"},
-    {id:"color-fields",title:"Color fields no. 04",category:"Background",format:"SVG",tags:["Background","Abstract","Texture"],description:"Layered organic fields designed as a lightweight, scalable background study.",kind:"fields"},
+    {id:"color-fields",title:"Color fields",category:"Background",format:"SVG",tags:["Background","Abstract","Texture"],description:"Layered organic fields designed as a lightweight, scalable background study.",kind:"fields"},
     {id:"motion-lines",title:"Motion lines study",category:"Motion",format:"SVG",tags:["Motion","Loop","Lines"],description:"A vector line study with visual rhythm that can be adapted into a looping motion experiment.",kind:"lines"},
     {id:"icon-playground",title:"Icon playground",category:"UI",format:"SVG",tags:["UI","Icons","Interface"],description:"A small set of simple interface symbols and geometric marks for wireframes and mockups.",kind:"icons"},
     {id:"cut-paper",title:"Cut-paper shapes",category:"Illustration",format:"SVG",tags:["Illustration","Shapes","Poster"],description:"Overlapping paper-inspired shapes with simple geometry and strong contrast.",kind:"paper"},
@@ -44,8 +44,8 @@
 
   function previewMarkup(kind, id) {
     switch (kind) {
-      case "shape": return '<div class="art-sample sample-shape"><span class="sample-label">FORM STUDY / 001</span><div class="sample-circle"></div><div class="sample-pillar"></div><div class="sample-ring"></div><span class="sample-footer">GEOMETRY / LAYER / PLAY</span></div>';
-      case "soft": return '<div class="art-sample sample-soft"><div class="sample-blob blob-a"></div><div class="sample-blob blob-b"></div><div class="sample-blob blob-c"></div><span>SOFT<br>MATTER</span><small>FIELD STUDY / 04</small></div>';
+      case "shape": return '<div class="art-sample sample-shape"><span class="sample-label">FORM STUDY</span><div class="sample-circle"></div><div class="sample-pillar"></div><div class="sample-ring"></div><span class="sample-footer">GEOMETRY / LAYER / PLAY</span></div>';
+      case "soft": return '<div class="art-sample sample-soft"><div class="sample-blob blob-a"></div><div class="sample-blob blob-b"></div><div class="sample-blob blob-c"></div><span>SOFT<br>MATTER</span><small>FIELD STUDY</small></div>';
       case "type": return id === "type-specimen" ? '<div class="art-sample sample-type specimen-variant"><small>OPENFORM / TYPE STUDY</small><strong>Rr<span>?</span></strong><label>REGULAR / ITALIC / CONTRAST</label><div class="type-specimen-line"></div></div>' : '<div class="art-sample sample-type"><small>OPENFORM / TYPE STUDY</small><strong>Aa<span>!</span></strong><label>FORM / FOLLOWS / FEELING</label></div>';
       case "orbit": return '<div class="art-sample sample-orbit"><svg viewBox="0 0 500 360" role="img" aria-label="Orbit illustration"><rect width="500" height="360" fill="#172238"/><g fill="none" stroke="#a7e5f2" stroke-width="2"><ellipse cx="250" cy="180" rx="160" ry="65" transform="rotate(-35 250 180)"/><ellipse cx="250" cy="180" rx="160" ry="65" transform="rotate(35 250 180)"/><ellipse cx="250" cy="180" rx="160" ry="65" transform="rotate(90 250 180)"/></g><circle cx="250" cy="180" r="48" fill="#4a7dec"/><circle cx="250" cy="180" r="15" fill="#d5f58e"/><circle cx="105" cy="135" r="12" fill="#ff8977"/><circle cx="350" cy="88" r="9" fill="#f8f6ef"/></svg></div>';
       case "ui": return '<div class="art-sample sample-ui"><div class="sample-ui-card"><div class="sample-ui-top"><i></i><i></i><i></i><span>DAILY / 07</span></div><small>YOUR SPACE, YOUR PACE</small><strong>Make room<br>for ideas.</strong><div class="sample-ui-rule"></div><b>Get started ↗</b></div></div>';
@@ -53,8 +53,8 @@
       case "lines": return '<div class="art-sample sample-lines"><svg viewBox="0 0 500 360" role="img" aria-label="Abstract motion lines"><rect width="500" height="360" fill="#172238"/>' + Array.from({length:14},(_,i)=>'<path d="M -20 '+(35+i*23)+' C 80 '+(i%3?25:210)+', 180 '+(i%2?300:90)+', 290 '+(45+i*21)+' S 420 '+(75+i*17)+', 530 '+(10+i*25)+'" fill="none" stroke="'+(["#a7e5f2","#85a6ff","#ff8977","#eef5ff"][i%4])+'" stroke-width="'+(i%4===0?3:1.5)+'" opacity="'+(.6+i*.025)+'"/>').join("") + '</svg></div>';
       case "icons": return '<div class="art-sample sample-icons"><div class="icon-grid">'+["＋","↗","○","✳","⌘","↘","□","×","⌕","↻","△","→"].map((x,i)=>'<span style="transform:rotate('+((i%3-1)*6)+'deg)">'+x+'</span>').join("")+'</div><small>12 MARKS / SVG</small></div>';
       case "paper": return '<div class="art-sample sample-paper"><div class="paper-circle"></div><div class="paper-arch"></div><div class="paper-cut"></div><div class="paper-label">CUT / FOLD / REPEAT</div></div>';
-      case "kinetic": return '<div class="art-sample sample-kinetic"><small>MOTION TEST / 02</small><strong>MOVE<br><em>WITH</em><br>INTENT.</strong><span>TYPE / TIMING / RHYTHM</span></div>';
-      case "grid": return '<div class="art-sample sample-grid"><div class="grid-lines"></div><small>NOTES FROM THE MARGIN / 008</small><strong>Make<br>space for<br><em>better ideas.</em></strong><span>EDITORIAL GRID STUDY</span></div>';
+      case "kinetic": return '<div class="art-sample sample-kinetic"><small>MOTION TEST</small><strong>MOVE<br><em>WITH</em><br>INTENT.</strong><span>TYPE / TIMING / RHYTHM</span></div>';
+      case "grid": return '<div class="art-sample sample-grid"><div class="grid-lines"></div><small>NOTES FROM THE MARGIN</small><strong>Make<br>space for<br><em>better ideas.</em></strong><span>EDITORIAL GRID STUDY</span></div>';
       default: return "";
     }
   }
@@ -63,7 +63,7 @@
   const modal = $("#assetModal");
   let activeFilter = "All", query = "", previousFocus = null;
   const search = $("#searchInput"), clear = $("#clearSearch"), empty = $("#emptyState");
-  const cardMarkup = (a, i) => '<article class="asset-card" tabindex="0" role="button" aria-label="View '+a.title+', '+a.category+', '+a.format+'" data-id="'+a.id+'" data-kind="'+a.kind+'" style="animation-delay:'+Math.min(i*25,180)+'ms"><div class="asset-preview">'+previewMarkup(a.kind,a.id)+'<span class="preview-label">'+String(i+1).padStart(2,"0")+' / '+a.category.toUpperCase()+'</span><span class="asset-open" aria-hidden="true">↗</span></div><div class="asset-meta"><div><h3>'+a.title+'</h3><p>'+a.format+' · ORIGINAL SAMPLE</p></div><span class="asset-category">'+a.category+'</span></div></article>';
+  const cardMarkup = (a, i) => '<article class="asset-card" tabindex="0" role="button" aria-label="View '+a.title+', '+a.category+', '+a.format+'" data-id="'+a.id+'" data-kind="'+a.kind+'" style="animation-delay:'+Math.min(i*25,180)+'ms"><div class="asset-preview">'+previewMarkup(a.kind,a.id)+'<span class="preview-label">'+a.category.toUpperCase()+'</span><span class="asset-open" aria-hidden="true"><span class="mi mi-arrow-up-right"></span></span></div><div class="asset-meta"><div><h3>'+a.title+'</h3><p>'+a.format+' · ORIGINAL SAMPLE</p></div><span class="asset-category">'+a.category+'</span></div></article>';
 
   function render() {
     if (!grid) return;
@@ -140,7 +140,7 @@
       shapes = '<g stroke="#C8C5BB" stroke-width="1">'+Array.from({length:8},(_,i)=>'<path d="M'+(30+i*63)+' 25V335"/>').join("")+Array.from({length:5},(_,i)=>'<path d="M25 '+(42+i*68)+'H475"/>').join("")+'</g><circle cx="272" cy="167" r="83" fill="'+palette.acid+'"/><path d="M272 84V250M189 167H355" stroke="'+palette.blue+'" stroke-width="3"/><path d="M210 107L334 231" stroke="'+palette.coral+'" stroke-width="18"/>';
     } else if (a.kind === "soft" || a.kind === "fields") {
       background = a.kind === "soft" ? palette.blue : palette.lavender;
-      shapes = '<circle cx="155" cy="157" r="122" fill="'+palette.coral+'"/><circle cx="337" cy="219" r="110" fill="'+palette.acid+'"/><circle cx="274" cy="106" r="63" fill="'+palette.paper+'" opacity=".93"/><path d="M40 288Q145 241 226 302T470 288" fill="none" stroke="'+palette.ink+'" stroke-width="3"/><text x="32" y="43" font-family="monospace" font-size="10" letter-spacing="2" fill="'+(a.kind === "soft" ? palette.paper : palette.ink)+'">FIELD STUDY / 04</text>';
+      shapes = '<circle cx="155" cy="157" r="122" fill="'+palette.coral+'"/><circle cx="337" cy="219" r="110" fill="'+palette.acid+'"/><circle cx="274" cy="106" r="63" fill="'+palette.paper+'" opacity=".93"/><path d="M40 288Q145 241 226 302T470 288" fill="none" stroke="'+palette.ink+'" stroke-width="3"/><text x="32" y="43" font-family="monospace" font-size="10" letter-spacing="2" fill="'+(a.kind === "soft" ? palette.paper : palette.ink)+'">FIELD STUDY</text>';
     } else if (a.kind === "lines") {
       background = palette.ink;
       shapes = Array.from({length:12},(_,i)=>'<path d="M-20 '+(24+i*27)+' C90 '+(i%2?30:185)+', 180 '+(i%3?290:110)+', 295 '+(40+i*24)+' S420 '+(80+i*19)+', 530 '+(15+i*28)+'" fill="none" stroke="'+(i%3===0?palette.coral:i%3===1?palette.acid:palette.paper)+'" stroke-width="'+(i%4===0?4:1.5)+'" opacity="'+(.64+i*.025)+'"/>').join("");

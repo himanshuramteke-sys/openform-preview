@@ -24,3 +24,7 @@ The 12 resource entries are original sample compositions; they are not a verifie
 
 ## Current reference pass
 Instrument Serif + Geist Sans, a quiet light/dark hero with a procedural moving gradient field, an image-led library, and an Outway-inspired structured footer. See [DESIGN.md](DESIGN.md).
+
+
+## Icon system
+The interface uses selected Mage Icons stroke SVGs via the official Mage Icons project. They are rendered as CSS masks to inherit the current text colour. Mage Icons is licensed under Apache License 2.0; see the [official licence](https://github.com/Mage-Icons/mage-icons/blob/main/License.txt). The icons are used as part of the website interface, not sold or presented as a standalone icon pack.
