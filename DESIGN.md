@@ -7,14 +7,14 @@ Openform is an open, community-first index of useful design resources and visual
 
 ## Taste references and how to interpret them
 - **Recent Design** — the library reference. Image-led discovery, compact navigation, category chips, varied preview sizes, low-noise chrome, and a clear sort control. Preserve the sense of a changing visual wall; do not copy its branding or duplicate its exact page.
-- **Sommerfest 25 / Fonts In Use** — the selected type pairing is Instrument Serif + Geist Sans. The reference uses size contrast, alternate/slanted letterforms, and a blend of expressive display typography with practical sans-serif information.
+- **Sommerfest 25 / Fonts In Use** — the selected type pairing is Cormorant Garamond + DM Sans. The reference uses size contrast, alternate/slanted letterforms, and a blend of expressive display typography with practical sans-serif information.
 - **Supplied hero screenshot and clip** — quiet outer canvas, floating white panel, compact navigation, a clear headline, restrained supporting details, and one expansive colour field that moves slowly. The field is blue/cyan-led, subtly gridded, and integrated into the panel rather than a floating decorative blob.
 
 ## Principles
 1. **Art is the primary content.** The library must feel like a curated archive because the resource previews have varied character. Cards should not all be identical boxes.
 2. **One hero gesture.** Keep the hero clean. The animated gradient/grid is the major visual event; do not add competing stickers, random shapes, or extra animation.
 3. **Elegant contrast, not loud UI.** Warm grey exterior, clean white panel, near-black text, understated borders, and a blue/cyan colour field. Let resource artwork introduce other colours.
-4. **Typography does the work.** Instrument Serif adds a distinctive editorial voice. Geist Sans handles navigation, body copy, controls, labels, and metadata. Avoid adding a third font family.
+4. **Typography does the work.** Cormorant Garamond adds a distinctive editorial voice. DM Sans handles navigation, body copy, controls, labels, and metadata. Avoid adding a third font family.
 5. **Keep the library practical.** Categories, search, sort, previews, details, and downloads remain easy to find. Inspiration from Recent Design informs discovery structure, not an exact clone.
 6. **Be honest about the prototype.** Current entries and downloads are original samples used to test the experience. Never imply they are a reviewed, production-ready external catalogue.
 7. **No decorative noise.** Borders and shadows are for structure. Motion, gradients, and ornament must support the work or explain the space.
@@ -32,8 +32,8 @@ Openform is an open, community-first index of useful design resources and visual
 - Supporting asset colours: mint `#B8EFDF`, coral `#FF8977`, lavender `#DCDFFB`, lime `#D5F58E`
 
 ## Typography
-- **Instrument Serif:** primary display headlines, selected section headings, and occasional expressive words. Use regular or italic; do not bold it.
-- **Geist Sans:** navigation, body, resource titles, labels, and controls.
+- **Cormorant Garamond:** primary display headlines, selected section headings, and occasional expressive words. Use regular or italic; do not bold it.
+- **DM Sans:** navigation, body, resource titles, labels, and controls.
 - Hero headline: responsive ~62–103px, tight line-height and modest negative tracking.
 - Body copy: 12–15px in the prototype. Keep text short and legible.
 - Metadata: 7–9px, always supplementary to a clear title/category.
@@ -60,7 +60,7 @@ Openform is an open, community-first index of useful design resources and visual
 
 ## Acceptance checklist
 - [ ] Homepage is clean, spacious, and visually memorable without extra decoration.
-- [ ] Instrument Serif + Geist Sans load correctly.
+- [ ] Cormorant Garamond + DM Sans load correctly.
 - [ ] Hero gradient field animates softly and remains secondary to the headline.
 - [ ] Library reads like an image archive with uneven preview heights.
 - [ ] Category filters, search, sort, dialog, and downloads still work.
@@ -70,7 +70,7 @@ Openform is an open, community-first index of useful design resources and visual
 
 
 ## 0.4 — Latest reference-led update
-- The hero uses the Instrument Serif + Geist Sans pairing and a clean floating-panel composition in both light and dark modes.
+- The hero uses the Cormorant Garamond + DM Sans pairing and a clean floating-panel composition in both light and dark modes.
 - A procedural animated, heat-map-like gradient field replaces the earlier soft static gradient. It changes palette with the theme, has restrained contour/grid detail, and respects reduced-motion settings.
 - The library remains a quiet, image-first masonry archive with category chips, search, sorting, and visible artwork.
 - The footer now follows an Outway-inspired information architecture: a closing statement/CTA, clear navigation groups, community status, and a concise legal/meta rail. It adapts the structure for Openform and avoids a fake newsletter form when no signup backend exists.
@@ -89,3 +89,9 @@ Openform is an open, community-first index of useful design resources and visual
 - The gradient uses multiple colour fields, controlled saturation, a subtle grid, and slow motion. Motion stops when reduced motion is requested.
 - Consolidated the home footer CTA, brand, navigation, and community links into one grid and one bottom rail. The library footer omits the large CTA section and stays compact.
 - Tightened footer copy and adjusted type size/leading, section margins, and layout rhythm at desktop, tablet, and mobile widths.
+
+
+## 0.9 — Font pairing update
+- Display serif: Cormorant Garamond (regular and italic).
+- Interface/body sans: DM Sans (400–700).
+- The pairing follows the supplied Fontpair reference. Keep the serif for editorial headlines and expressive display moments; use DM Sans for body copy, navigation, filters, metadata, and controls.

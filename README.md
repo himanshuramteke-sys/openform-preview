@@ -8,7 +8,7 @@ https://himanshuramteke-sys.github.io/openform-preview/
 ## Design direction
 See [DESIGN.md](DESIGN.md). The current direction is based on the supplied references:
 - Recent Design for a visual archive with a quiet interface and uneven, image-led browsing.
-- Instrument Serif + Geist Sans from the Fonts In Use reference.
+- Cormorant Garamond + DM Sans from the Fonts In Use reference.
 - A spacious floating hero panel and slowly moving blue/cyan grid-gradient field inspired by the supplied hero screenshot and clip.
 
 ## Files
@@ -23,7 +23,7 @@ The 12 resource entries are original sample compositions; they are not a verifie
 
 
 ## Current reference pass
-Instrument Serif + Geist Sans, a quiet light/dark hero with a procedural moving gradient field, an image-led library, and an Outway-inspired structured footer. See [DESIGN.md](DESIGN.md).
+Cormorant Garamond + DM Sans, a quiet light/dark hero with a procedural moving gradient field, an image-led library, and an Outway-inspired structured footer. See [DESIGN.md](DESIGN.md).
 
 
 ## Icon system
@@ -32,3 +32,7 @@ The interface uses selected Mage Icons stroke SVGs via the official Mage Icons p
 
 ## Latest refinement
 The homepage uses a full-width, open hero with a CSS mesh gradient inspired by Gradient Lab's mesh mode. The implementation is local CSS rather than an embedded third-party iframe. The homepage footer CTA and navigation now share one footer grid; the library page uses a simpler footer without the CTA block.
+
+
+## Type pairing
+Cormorant Garamond for expressive display typography and DM Sans for readable interface/body text, based on the supplied Fontpair reference.
