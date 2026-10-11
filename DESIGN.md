@@ -129,3 +129,8 @@ Openform is an open, community-first index of useful design resources and visual
 - Removed the duplicated footer wordmark and the unnecessary “Independent design resource library” bottom label.
 - Increased the Gradient Lab shader speed to 0.20 and added a restrained moving colour veil as a visible animation layer. Reduced-motion users still receive the static gradient.
 - Interface sounds default to on but only play in response to user interaction. Each sound control switches the icon/state, persists the preference, and supports pointer and keyboard activation.
+
+
+## 1.5 — Gradient motion fix
+- Corrected the dark Gradient Lab preset to use dedicated near-black, deep-blue, cyan, mint, and indigo colour stops.
+- Increased the shader speed to 0.20 in both themes and tightened the supplemental ambient motion from 16 seconds to 14 seconds.

@@ -911,7 +911,7 @@ body.dark.home-page .hero-aside-item p{color:#d5deec}
   background-size:140% 140%;
   background-position:0% 45%;
   mix-blend-mode:soft-light;
-  animation:openform-ambient-shift 16s cubic-bezier(.45,0,.55,1) infinite alternate;
+  animation:openform-ambient-shift 14s cubic-bezier(.45,0,.55,1) infinite alternate;
   will-change:background-position;
 }
 .home-page .hero-field::after{z-index:2}

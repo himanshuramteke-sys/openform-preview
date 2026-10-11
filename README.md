@@ -52,3 +52,5 @@ This project targets WCAG 2.2 AA and applies relevant UXDT guidance for semantic
 
 ## Homepage polish
 The desktop navigation is centred; hero highlights use restrained frosted cards; redundant in-hero CTAs and footer labels are removed. The Gradient Lab curtain shader runs with a stronger speed setting plus a subtle CSS motion layer; reduced-motion settings disable the motion. User-triggered click/hover sounds are enabled by default but can be switched off.
+
+Dark mode uses its own deep-blue/cyan Gradient Lab palette; a subtle CSS colour-field animation supplements the embed. Both respect reduced-motion preferences.
