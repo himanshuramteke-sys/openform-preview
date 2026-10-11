@@ -24,3 +24,7 @@ WCAG AA requires at least 4.5:1 contrast for normal text and 3:1 for large text,
 - Keyboard-only traversal and focus order.
 - Hero text contrast at different gradient positions in both themes.
 - Real device touch testing.
+
+
+## Contrast calculation snapshot (token-level)
+The selected body and muted text colours are above 4.5:1 against the corresponding flat light/dark surfaces. The light-mode hero display blue is set to a darker accessible accent. Because the embedded gradient changes over time and is cross-origin, the resulting hero must still be checked visually in a browser; the contrast overlay is intended to keep text above the required threshold across the canvas.

@@ -720,3 +720,16 @@ body.dark .field-static-gradient{background:radial-gradient(ellipse at 74% 80%,r
  .hero-gradient-embed{display:none!important}
  .field-static-gradient{display:block!important}
 }
+/* Contrast fixes for text layered over the hero mesh and outlined controls. */
+.home-page .hero-main-copy h1 em{color:#204b9b}
+.home-page .hero-main-copy .eyebrow{color:#414956}
+.home-page .hero-theme-toggle,.home-page .sound-toggle{background:rgba(255,255,255,.96);border:1px solid #7d8794;color:#20242b}
+.home-page .hero-theme-toggle:hover,.home-page .sound-toggle:hover{background:#e8f0ff;border-color:#2859b8}
+.library-page .sidebar-note-foot,.library-page .footer-spotlight-meta{font-size:12px;line-height:1.5}
+@media(prefers-contrast:more){
+ .home-page .hero-field::after{background:rgba(255,255,255,.78)!important}
+ body.dark.home-page .hero-field::after{background:rgba(3,6,12,.76)!important}
+ .library-page .search-box,.library-page .sort-wrap select,.library-page .asset-category{border-width:2px}
+ .library-page .sidebar-filter.is-active,.library-page .filter-chip.is-active{outline:2px solid currentColor;outline-offset:1px}
+ .site-footer-design{border-top:2px solid currentColor}
+}
