@@ -1079,3 +1079,18 @@ body.dark.library-page .library-tools .sort-wrap::after{border-color:#e3e8f0}
 @media(forced-colors:active){
   .library-page .library-tools .sort-wrap::after{border-color:CanvasText}
 }
+
+
+/* Focus refinement limited to the sort dropdown: remove the blue halo, retain a neutral focus cue. */
+body.library-page .library-tools .sort-wrap select:focus,
+body.library-page .library-tools .sort-wrap select:focus-visible{
+  outline:1px solid #8a96a7!important;
+  outline-offset:1px!important;
+  box-shadow:none!important;
+}
+body.dark.library-page .library-tools .sort-wrap select:focus,
+body.dark.library-page .library-tools .sort-wrap select:focus-visible{
+  outline:1px solid #8a96a7!important;
+  outline-offset:1px!important;
+  box-shadow:none!important;
+}
