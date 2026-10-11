@@ -20,3 +20,7 @@ See [DESIGN.md](DESIGN.md). The current direction is based on the supplied refer
 
 ## Current limitations
 The 12 resource entries are original sample compositions; they are not a verified third-party catalogue. The download/export actions generate original sample SVG files. There is no backend, upload pipeline, member account, contribution workflow, or moderation yet. Before launch, real resources need verified file types, licences, attribution, and author information.
+
+
+## Current reference pass
+Instrument Serif + Geist Sans, a quiet light/dark hero with a procedural moving gradient field, an image-led library, and an Outway-inspired structured footer. See [DESIGN.md](DESIGN.md).

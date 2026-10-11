@@ -180,4 +180,60 @@
       if(e.shiftKey&&document.activeElement===first){e.preventDefault();last.focus()}else if(!e.shiftKey&&document.activeElement===last){e.preventDefault();first.focus()}
     }
   });
+
+  // Procedural hero gradient based on the supplied heat-map reference.
+  const gradientCanvas = $("#heroGradientCanvas");
+  if (gradientCanvas) {
+    const ctx = gradientCanvas.getContext("2d", { alpha: false });
+    const width = 640, height = 190;
+    gradientCanvas.width = width; gradientCanvas.height = height;
+    const image = ctx.createImageData(width, height);
+    const pixels = image.data;
+    const parseHex = hex => [parseInt(hex.slice(1,3),16),parseInt(hex.slice(3,5),16),parseInt(hex.slice(5,7),16)];
+    const lightPalette = ["#dcecfb","#77d2f4","#4d9df8","#49c9d2","#b5e88e","#f5df80","#ffac69","#f47769","#e96b86"].map(parseHex);
+    const darkPalette = ["#ef4254","#bd4ab5","#6053f4","#2677f4","#36c5e3","#77e2cf","#e4df78","#ff9c54","#f05a4c"].map(parseHex);
+    const clamp = value => Math.max(0,Math.min(1,value));
+    const smooth = (a,b,x) => { const t=clamp((x-a)/(b-a)); return t*t*(3-2*t); };
+    const sample = (palette, t) => {
+      const scaled=clamp(t)*(palette.length-1), i=Math.min(palette.length-2,Math.floor(scaled)), f=scaled-i;
+      return [palette[i][0]+(palette[i+1][0]-palette[i][0])*f,palette[i][1]+(palette[i+1][1]-palette[i][1])*f,palette[i][2]+(palette[i+1][2]-palette[i][2])*f];
+    };
+    let lastDraw=0;
+    const draw = now => {
+      const dark=document.body.classList.contains("dark");
+      const palette=dark?darkPalette:lightPalette;
+      const base=dark?[18,23,34]:[241,246,251];
+      const time=window.matchMedia("(prefers-reduced-motion: reduce)").matches?0:now/1000;
+      for(let y=0;y<height;y++){
+        const v=y/(height-1);
+        for(let x=0;x<width;x++){
+          const u=x/(width-1);
+          const wave=Math.sin(u*8.3+time*.45)*.047+Math.sin(u*23.5-time*.33)*.022+Math.sin(u*3.2-time*.27)*.025;
+          const rhythm=Math.sin(u*37+time*.82+Math.sin(u*6.5)*1.35);
+          const peaks=Math.pow(Math.max(0,rhythm),5.5);
+          const horizon=.25+wave-peaks*.11;
+          const field=smooth(horizon-.075,horizon+.10,v);
+          const depth=clamp((v-horizon)/Math.max(.1,1-horizon));
+          const band=.5+.5*Math.sin(depth*47+Math.sin(u*17+time*.7)*1.7);
+          const paletteT=clamp(.07+u*.46+depth*.43+Math.sin(u*12-time*.5)*.055+peaks*.13+(band-.5)*.045);
+          let col=sample(palette,paletteT);
+          const columnTint=peaks*smooth(horizon-.01,horizon+.16,v);
+          const alternate=sample(palette,clamp(paletteT+.15));
+          col=[col[0]*(1-columnTint*.3)+alternate[0]*columnTint*.3,col[1]*(1-columnTint*.3)+alternate[1]*columnTint*.3,col[2]*(1-columnTint*.3)+alternate[2]*columnTint*.3];
+          const brightness=.93+.07*band;
+          const idx=(y*width+x)*4;
+          for(let c=0;c<3;c++) pixels[idx+c]=Math.round(base[c]*(1-field)+col[c]*brightness*field);
+          pixels[idx+3]=255;
+        }
+      }
+      ctx.putImageData(image,0,0);
+    };
+    const loop = now => {
+      if (now-lastDraw>42) { draw(now); lastDraw=now; }
+      if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) requestAnimationFrame(loop);
+    };
+    draw(0);
+    if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) requestAnimationFrame(loop);
+  }
+
 })();

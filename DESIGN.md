@@ -67,3 +67,10 @@ Openform is an open, community-first index of useful design resources and visual
 - [ ] Mobile layout is usable and has no horizontal page overflow.
 - [ ] Reduced-motion preference is respected.
 - [ ] Sample status is transparent.
+
+
+## 0.4 — Latest reference-led update
+- The hero uses the Instrument Serif + Geist Sans pairing and a clean floating-panel composition in both light and dark modes.
+- A procedural animated, heat-map-like gradient field replaces the earlier soft static gradient. It changes palette with the theme, has restrained contour/grid detail, and respects reduced-motion settings.
+- The library remains a quiet, image-first masonry archive with category chips, search, sorting, and visible artwork.
+- The footer now follows an Outway-inspired information architecture: a closing statement/CTA, clear navigation groups, community status, and a concise legal/meta rail. It adapts the structure for Openform and avoids a fake newsletter form when no signup backend exists.

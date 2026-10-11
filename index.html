@@ -6,7 +6,7 @@
 <title>Openform — A place to start something</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css?v=20261011-4"><script src="app.js?v=20261011-4" defer></script>
+<link rel="stylesheet" href="styles.css?v=20261011-5"><script src="app.js?v=20261011-5" defer></script>
 </head>
 <body class="home-page">
 <div class="ambient-ribbon ribbon-one" aria-hidden="true"></div><div class="ambient-ribbon ribbon-two" aria-hidden="true"></div>
@@ -15,6 +15,7 @@
     <header class="hero-nav">
       <a class="wordmark" href="index.html" aria-label="Openform home"><span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i></span><span>openform<span class="wordmark-dot">.</span></span></a>
       <nav aria-label="Main navigation"><a href="library.html">Library</a><a href="#about">About</a></nav>
+      <button class="theme-toggle hero-theme-toggle" id="themeToggle" type="button" aria-label="Switch colour theme" aria-pressed="false"><span class="theme-icon" aria-hidden="true">◐</span></button>
       <a class="nav-cta" href="library.html">Explore the index <span aria-hidden="true">↗</span></a>
     </header>
     <div class="hero-content">
@@ -30,11 +31,10 @@
       </aside>
     </div>
     <div class="hero-field" aria-hidden="true">
-      <div class="field-colour"></div><div class="field-grid"></div>
-      <span class="field-caption">OPENFORM / AN OPEN LIBRARY</span><span class="field-coordinates">DESIGN / PLAY / REMIX</span>
-      <span class="field-orbit orbit-a"></span><span class="field-orbit orbit-b"></span>
+      <canvas id="heroGradientCanvas" class="field-canvas"></canvas>
+      <div class="field-grid"></div>
+      <span class="field-caption">OPENFORM / DESIGN RESOURCES</span><span class="field-coordinates">AN OPEN INDEX · 001—∞</span>
     </div>
-    <span class="panel-corner-label" aria-hidden="true">THINGS TO MAKE THINGS WITH.</span>
   </section>
   <section class="about-strip" id="about">
     <div class="section-index"><span>01 / THE IDEA</span><span class="tiny-mark">✳</span></div>
@@ -48,7 +48,29 @@
       <a class="selection-card" href="library.html?resource=motion-lines"><div class="selection-art selection-art-motion"><span class="art-index">MOTION / 007</span><div class="motion-ribbon"></div><div class="motion-orb"></div><span class="art-caption">RHYTHM IN A STILL FRAME.</span></div><div class="selection-info"><div><h3>Motion lines</h3><p>A visual rhythm to build on.</p></div><span class="asset-format">SVG ↗</span></div></a>
     </div>
   </section>
-  <footer class="home-footer"><a class="wordmark" href="index.html"><span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i></span><span>openform<span class="wordmark-dot">.</span></span></a><p>A small index. More to come.</p><a href="library.html">Go explore <span aria-hidden="true">↗</span></a><span class="footer-note">PROTOTYPE / 2026</span></footer>
+  
+<footer class="site-footer-design">
+  <section class="footer-spotlight">
+    <div class="footer-spotlight-glow" aria-hidden="true"></div>
+    <div class="footer-spotlight-meta"><span>OPENFORM / 001</span><span>AN OPEN INDEX FOR CURIOUS MAKERS</span></div>
+    <div class="footer-spotlight-main">
+      <div><p class="footer-eyebrow">GOOD THINGS ARE BETTER SHARED</p><h2>Find something.<br><em>Make it yours.</em></h2></div>
+      <a class="footer-primary-cta" href="library.html">Explore the library <span aria-hidden="true">↗</span></a>
+    </div>
+    <span class="footer-big-word" aria-hidden="true">OPENFORM</span>
+  </section>
+  <div class="footer-content">
+    <div class="footer-intro">
+      <a class="wordmark footer-wordmark" href="index.html"><span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i></span><span>openform<span class="wordmark-dot">.</span></span></a>
+      <p>A growing collection of design resources, experiments, and useful starting points.</p>
+      <span class="footer-intro-note">FREE TO EXPLORE. MADE TO BE REMIXED.</span>
+    </div>
+    <nav class="footer-link-group" aria-label="Explore links"><span>EXPLORE</span><a href="library.html">All resources <span>↗</span></a><a href="library.html#assetGrid">Illustration & graphics</a><a href="library.html#assetGrid">UI & components</a><a href="library.html#assetGrid">Type & motion</a></nav>
+    <nav class="footer-link-group" aria-label="Project links"><span>THE PROJECT</span><a href="index.html#about">About Openform</a><a href="DESIGN.md">Design principles <span>↗</span></a><a href="https://github.com/himanshuramteke-sys/openform-preview">Source code <span>↗</span></a></nav>
+    <div class="footer-community"><span>COMMUNITY</span><h3>Good things<br>travel further.</h3><p>Resource submissions are being planned. For now, explore the sample collection and help shape what comes next.</p><a href="library.html">Browse the collection <span>↗</span></a></div>
+  </div>
+  <div class="footer-bottom"><span>© 2026 OPENFORM</span><span>AN INDEPENDENT, COMMUNITY-FIRST DESIGN INDEX</span><a href="#top">BACK TO TOP ↑</a></div>
+</footer>
 </main>
 </body>
 </html>
