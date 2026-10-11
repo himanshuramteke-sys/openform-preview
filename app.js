@@ -31,7 +31,7 @@
   // Tiny original interface sounds synthesized locally with Web Audio (no sound-file downloads).
   const soundButtons = $$("[data-sound-toggle]");
   let soundsEnabled = true;
-  try { soundsEnabled = localStorage.getItem("openform-sounds") !== "off"; } catch (_) {}
+  try { soundsEnabled = localStorage.getItem("openform-sounds-v2") !== "off"; } catch (_) {}
   let audioContext = null;
   let currentHoverTarget = null;
 
@@ -88,7 +88,7 @@
   syncSoundButtons();
   soundButtons.forEach(button => button.addEventListener("click", () => {
     soundsEnabled = !soundsEnabled;
-    try { localStorage.setItem("openform-sounds", soundsEnabled ? "on" : "off"); } catch (_) {}
+    try { localStorage.setItem("openform-sounds-v2", soundsEnabled ? "on" : "off"); } catch (_) {}
     syncSoundButtons();
     if (soundsEnabled) {
       const ctx = getAudioContext();
