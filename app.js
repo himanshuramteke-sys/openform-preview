@@ -163,7 +163,7 @@
   const modal = $("#assetModal");
   let activeFilter = "All", query = "", previousFocus = null;
   const search = $("#searchInput"), clear = $("#clearSearch"), empty = $("#emptyState");
-  const cardMarkup = (a, i) => '<article class="asset-card" tabindex="0" role="button" aria-label="View '+a.title+', '+a.category+', '+a.format+'" data-id="'+a.id+'" data-kind="'+a.kind+'" style="animation-delay:'+Math.min(i*25,180)+'ms"><div class="asset-preview">'+previewMarkup(a.kind,a.id)+'<span class="preview-label">'+a.category.toUpperCase()+'</span><span class="asset-open" aria-hidden="true"><span class="mi mi-arrow-up-right"></span></span></div><div class="asset-meta"><div><h3>'+a.title+'</h3><p>'+a.format+' · ORIGINAL SAMPLE</p></div><span class="asset-category">'+a.category+'</span></div></article>';
+  const cardMarkup = (a, i) => '<article class="asset-card" tabindex="0" role="button" aria-label="View '+a.title+', '+a.category+', '+a.format+'" data-id="'+a.id+'" data-kind="'+a.kind+'" style="animation-delay:'+Math.min(i*25,180)+'ms"><div class="asset-preview">'+previewMarkup(a.kind,a.id)+'<span class="preview-label">'+a.category.toUpperCase()+'</span><span class="asset-open" aria-hidden="true"><span class="mi mi-arrow-up-right"></span></span></div><div class="asset-meta"><div><h3>'+a.title+'</h3><p>ORIGINAL SAMPLE</p></div><span class="asset-format-badge">'+a.format+'</span></div></article>';
 
   function render() {
     if (!grid) return;

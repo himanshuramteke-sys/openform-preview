@@ -134,3 +134,12 @@ Openform is an open, community-first index of useful design resources and visual
 ## 1.5 — Gradient motion fix
 - Corrected the dark Gradient Lab preset to use dedicated near-black, deep-blue, cyan, mint, and indigo colour stops.
 - Increased the shader speed to 0.20 in both themes and tightened the supplemental ambient motion from 16 seconds to 14 seconds.
+
+
+## 1.6 — Library interaction polish
+- Removed the redundant “Design” heading so search and sort align to the content row.
+- Harmonized sidebar filter active states with category chips, including icon and count colors; hover no longer obscures the selected state.
+- Assigned a distinct Layout Grid icon to UI & components instead of reusing the All resources stack icon.
+- Corrected select padding, arrow alignment, hover/focus styles, and theme-specific option colours.
+- Simplified card metadata: category stays on the preview; the duplicate category badge is removed from the info row, and the format appears as a compact badge in that right-side position.
+- The card arrow appears on hover and keyboard focus rather than permanently on every card.
