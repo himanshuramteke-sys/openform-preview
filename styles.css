@@ -1051,3 +1051,31 @@ body.dark.library-page .sidebar-filter[data-filter="UI"].is-active .sidebar-icon
  .library-tools .sort-wrap select{min-width:124px}
 }
 @media(prefers-reduced-motion:reduce){.library-page .asset-open,.library-page .sidebar-filter,.library-tools .sort-wrap select{transition:none!important}}
+
+
+/* Targeted sort dropdown fix: one CSS-drawn chevron, no tiled background image. */
+.library-page .library-tools .sort-wrap{position:relative}
+.library-page .library-tools .sort-wrap select,
+body.dark.library-page .library-tools .sort-wrap select{
+  background-image:none!important;
+  background-repeat:no-repeat!important;
+  background-size:auto!important;
+  padding-right:40px!important;
+}
+.library-page .library-tools .sort-wrap::after{
+  content:"";
+  position:absolute;
+  right:15px;
+  top:calc(50% + 1px);
+  width:7px;
+  height:7px;
+  border-right:1.75px solid #414956;
+  border-bottom:1.75px solid #414956;
+  border-radius:0 0 1px 0;
+  transform:translateY(-65%) rotate(45deg);
+  pointer-events:none;
+}
+body.dark.library-page .library-tools .sort-wrap::after{border-color:#e3e8f0}
+@media(forced-colors:active){
+  .library-page .library-tools .sort-wrap::after{border-color:CanvasText}
+}
