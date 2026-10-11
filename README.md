@@ -28,3 +28,7 @@ Instrument Serif + Geist Sans, a quiet light/dark hero with a procedural moving 
 
 ## Icon system
 The interface uses selected Mage Icons stroke SVGs via the official Mage Icons project. They are rendered as CSS masks to inherit the current text colour. Mage Icons is licensed under Apache License 2.0; see the [official licence](https://github.com/Mage-Icons/mage-icons/blob/main/License.txt). The icons are used as part of the website interface, not sold or presented as a standalone icon pack.
+
+
+## Latest refinement
+The homepage uses a full-width, open hero with a CSS mesh gradient inspired by Gradient Lab's mesh mode. The implementation is local CSS rather than an embedded third-party iframe. The homepage footer CTA and navigation now share one footer grid; the library page uses a simpler footer without the CTA block.

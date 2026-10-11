@@ -81,3 +81,11 @@ Openform is an open, community-first index of useful design resources and visual
 - Raised non-headline interface and metadata typography by approximately 2 CSS pixels. Display/headline sizes remain unchanged.
 - Increased section separation, card gaps, and footer breathing room while retaining the image-first density of the library.
 - Adopted Mage Icons stroke SVGs for navigation and interface actions. The selected icons are used as CSS masks so they inherit current text colour in light and dark themes. Sources are linked from the official [Mage Icons repository](https://github.com/Mage-Icons/mage-icons), licensed under Apache 2.0.
+
+
+## 0.7 — Full-width hero and integrated footer
+- Removed the contained white-card treatment from the homepage hero. Navigation and hero content now sit on a full-bleed canvas.
+- Replaced the per-pixel canvas animation with a CSS-only, layered mesh gradient informed by Backgrounds Supply Gradient Lab's soft/mesh shader vocabulary. Separate light and dark palettes preserve readable text and require no external iframe, video download, or animation dependency.
+- The gradient uses multiple colour fields, controlled saturation, a subtle grid, and slow motion. Motion stops when reduced motion is requested.
+- Consolidated the home footer CTA, brand, navigation, and community links into one grid and one bottom rail. The library footer omits the large CTA section and stays compact.
+- Tightened footer copy and adjusted type size/leading, section margins, and layout rhythm at desktop, tablet, and mobile widths.
