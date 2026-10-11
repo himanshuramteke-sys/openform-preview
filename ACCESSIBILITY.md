@@ -1,0 +1,26 @@
+# Openform accessibility notes
+
+## Target
+WCAG 2.2 Level AA, with relevant UXDT guidance for visual accessibility and usability. This document records the implementation baseline; it is not a conformance certificate.
+
+## Implemented
+- 16px core body and search copy with generous line-height; smaller text is limited to secondary metadata and artwork annotations.
+- Higher-contrast light/dark semantic palettes, secondary text, controls, placeholders, input borders and footer text.
+- Contrast veil over the hero gradient.
+- Skip links and 3px visible keyboard focus indicators.
+- 44px practical targets for theme/sound controls, primary actions and resource-card affordances.
+- Search result count announced politely without announcing the full changing grid.
+- Resource cards with accessible names and keyboard activation; dialog with accessible name, close control, Escape dismissal, focus restoration and Tab trapping.
+- Sound effects off until opt-in; both toggle controls stay synchronized.
+- Reduced-motion and forced-colour modes hide the animated cross-origin gradient and show a static fallback.
+- Navigation and resource browsing reflow at narrow widths.
+
+## Contrast targets
+WCAG AA requires at least 4.5:1 contrast for normal text and 3:1 for large text, with defined exceptions. The hero uses a contrast veil, but its changing cross-origin gradient still needs visual checking in both themes.
+
+## Manual validation still required
+- NVDA with Chrome/Firefox and VoiceOver with Safari.
+- 200% and 400% browser zoom; 320 CSS-pixel reflow.
+- Keyboard-only traversal and focus order.
+- Hero text contrast at different gradient positions in both themes.
+- Real device touch testing.

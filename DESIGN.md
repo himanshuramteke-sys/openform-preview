@@ -111,3 +111,12 @@ Openform is an open, community-first index of useful design resources and visual
 - Removed overlapping custom gradient captions so the Gradient Lab attribution stays legible.
 - Increased curtain movement speed to 0.18. Dark mode starts with deeper near-black colour stops and a more pronounced dark fade at the top.
 - Rebuilt both Gradient Lab presets from valid JSON, preserving the same settings structure.
+
+
+## 1.3 — Accessibility and contrast pass
+- Updated against WCAG 2.2 AA with relevant UXDT guidance for visual accessibility, keyboard operation and responsive reflow.
+- Raised core interface/body type to a readable scale with 16px body/search copy, 1.5–1.75 line-height and larger controls.
+- Reworked light/dark semantic colours and the hero contrast veil. Restored the earlier blue/cyan/mint/lavender palette at the earlier 0.10 speed.
+- Added skip links, visible keyboard focus, a live result count, mobile navigation access at narrow widths, forced-colour styling and a static hero fallback for reduced-motion users.
+- Sound effects are opt-in by default; both sound controls stay in sync.
+- References: [WCAG 2.2](https://www.w3.org/TR/WCAG22/), [UXDT visual accessibility](https://www.uxdt.nic.in/guidelines/ux-design-guidelines/enhancing-visual-accessibility/), and [UXDT accessibility testing checklist](https://www.uxdt.nic.in/guidelines/ux-design-guidelines/accessibility-testing-checklist/).

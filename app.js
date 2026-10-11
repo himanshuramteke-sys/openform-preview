@@ -5,19 +5,22 @@
   const mobileMenu = $("#mobileMenu");
   try { if (localStorage.getItem("openform-theme") === "dark") document.body.classList.add("dark"); } catch (_) {}
   const heroGradientFrame = $("#heroGradientEmbed");
+  const reducedMotionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
   function syncTheme() {
     const dark = document.body.classList.contains("dark");
     themeButtons.forEach(button => {
       const icon = $(".theme-icon", button);
       if (icon) icon.innerHTML = '<span class="mi mi-' + (dark ? "sun" : "moon") + '" aria-hidden="true"></span>';
       button.setAttribute("aria-pressed", String(dark));
-      button.setAttribute("aria-label", dark ? "Switch to light theme" : "Switch to dark theme");
+      button.setAttribute("aria-label", "Dark theme");
     });
     if (heroGradientFrame) {
       const gradientSrc = dark ? heroGradientFrame.dataset.darkSrc : heroGradientFrame.dataset.lightSrc;
-      if (gradientSrc && heroGradientFrame.getAttribute("src") !== gradientSrc) heroGradientFrame.setAttribute("src", gradientSrc);
+      if (reducedMotionQuery.matches) heroGradientFrame.removeAttribute("src");
+      else if (gradientSrc && heroGradientFrame.getAttribute("src") !== gradientSrc) heroGradientFrame.setAttribute("src", gradientSrc);
     }
   }
+  reducedMotionQuery.addEventListener?.("change", syncTheme);
   syncTheme();
   themeButtons.forEach(button => button.addEventListener("click", () => {
     document.body.classList.toggle("dark");
@@ -26,9 +29,9 @@
   }));
 
   // Tiny original interface sounds synthesized locally with Web Audio (no sound-file downloads).
-  const soundButtons = $("[data-sound-toggle]");
-  let soundsEnabled = true;
-  try { soundsEnabled = localStorage.getItem("openform-sounds") !== "off"; } catch (_) {}
+  const soundButtons = $$("[data-sound-toggle]");
+  let soundsEnabled = false;
+  try { soundsEnabled = localStorage.getItem("openform-sounds") === "on"; } catch (_) {}
   let audioContext = null;
   let currentHoverTarget = null;
 
@@ -37,7 +40,7 @@
       const icon = $(".sound-icon", button);
       if (icon) icon.innerHTML = '<span class="mi mi-' + (soundsEnabled ? "volume-up" : "volume-mute") + '" aria-hidden="true"></span>';
       button.setAttribute("aria-pressed", String(soundsEnabled));
-      button.setAttribute("aria-label", soundsEnabled ? "Mute interface sounds" : "Enable interface sounds");
+      button.setAttribute("aria-label", "Interface sounds");
       button.title = soundsEnabled ? "Mute interface sounds" : "Enable interface sounds";
     });
   }

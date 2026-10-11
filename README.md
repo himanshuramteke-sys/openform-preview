@@ -44,3 +44,7 @@ The homepage embeds Backgrounds Supply Gradient Lab using a recoloured “curtai
 
 ## Credits
 Made by [Himanshu Ramteke](https://himanshuramteke.framer.website/).
+
+
+## Accessibility
+This project targets WCAG 2.2 AA and applies relevant UXDT guidance for semantics, skip navigation, keyboard access, visible focus, readable contrast/type, touch targets, reduced motion, forced colours and live results. This is a code-level improvement pass, not a formal certification; manual screen-reader and zoom testing remains necessary. See [ACCESSIBILITY.md](ACCESSIBILITY.md).
