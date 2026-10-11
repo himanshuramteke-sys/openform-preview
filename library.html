@@ -6,7 +6,7 @@
 <title>Library — Openform</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css?v=20261011-13"><script src="app.js?v=20261011-9" defer></script>
+<link rel="stylesheet" href="styles.css?v=20261011-14"><script src="app.js?v=20261011-9" defer></script>
 </head>
 <body class="library-page">
 <a class="skip-link" href="#main-content">Skip to main content</a>
@@ -27,23 +27,27 @@
   </aside>
   <main class="library-main" id="main-content">
     <header class="library-header">
-      <div class="library-page-title"><h1>Design <span>—</span></h1><p>A small index of useful things and interesting ideas.</p></div>
-      <div class="library-header-actions"><span class="collection-note"><span class="collection-dot"></span> FREE TO EXPLORE</span><a href="index.html" class="back-link">About Openform <span class="mi mi-arrow-up-right" aria-hidden="true"></span></a><button class="sound-toggle mobile-sound-toggle" data-sound-toggle type="button" aria-label="Interface sounds" aria-pressed="false" title="Interface sounds"><span class="sound-icon" aria-hidden="true"><span class="mi mi-volume-up"></span></span></button><button class="theme-toggle mobile-theme-toggle" id="themeToggleMobile" type="button" aria-label="Switch colour theme" aria-pressed="false"><span class="theme-icon" aria-hidden="true"><span class="mi mi-moon"></span></span></button></div>
+      <div class="library-page-title"><h1>Design</h1></div>
+      <div class="library-header-controls">
+        <div class="library-tools">
+          <label class="search-box"><span class="search-icon" aria-hidden="true"><span class="mi mi-search"></span></span><input id="searchInput" type="search" placeholder="Search design things…" aria-label="Search assets"><kbd aria-hidden="true">/</kbd><button id="clearSearch" type="button" aria-label="Clear search"><span class="mi mi-cancel" aria-hidden="true"></span></button></label>
+          <label class="sort-wrap"><span>SORT</span><select id="sortSelect" aria-label="Sort resources"><option value="featured">Curated</option><option value="az">A — Z</option><option value="type">Category</option></select></label>
+        </div>
+        <div class="category-strip" id="filterRow" role="group" aria-label="Filter by category">
+          <button class="filter-chip is-active" type="button" data-filter="All" aria-pressed="true">All <span>12</span></button>
+          <button class="filter-chip" type="button" data-filter="Illustration" aria-pressed="false">Illustration <span>3</span></button>
+          <button class="filter-chip" type="button" data-filter="UI" aria-pressed="false">Interface <span>2</span></button>
+          <button class="filter-chip" type="button" data-filter="Background" aria-pressed="false">Backgrounds <span>3</span></button>
+          <button class="filter-chip" type="button" data-filter="Typography" aria-pressed="false">Typography <span>2</span></button>
+          <button class="filter-chip" type="button" data-filter="Motion" aria-pressed="false">Motion <span>2</span></button>
+        </div>
+        <span class="sr-only" id="filterStatus" role="status" aria-live="polite" aria-atomic="true">12 resources</span>
+      </div>
+      <div class="library-header-actions">
+        <button class="sound-toggle mobile-sound-toggle" data-sound-toggle type="button" aria-label="Interface sounds" aria-pressed="false" title="Interface sounds"><span class="sound-icon" aria-hidden="true"><span class="mi mi-volume-up"></span></span></button>
+        <button class="theme-toggle mobile-theme-toggle" id="themeToggleMobile" type="button" aria-label="Switch colour theme" aria-pressed="false"><span class="theme-icon" aria-hidden="true"><span class="mi mi-moon"></span></span></button>
+      </div>
     </header>
-    <div class="library-tools">
-      <label class="search-box"><span class="search-icon" aria-hidden="true"><span class="mi mi-search"></span></span><input id="searchInput" type="search" placeholder="Search design things…" aria-label="Search assets"><kbd>/</kbd><button id="clearSearch" type="button" aria-label="Clear search"><span class="mi mi-cancel" aria-hidden="true"></span></button></label>
-      <label class="sort-wrap"><span>SORT</span><select id="sortSelect" aria-label="Sort resources"><option value="featured">Curated</option><option value="az">A — Z</option><option value="type">Category</option></select></label>
-    </div>
-    <div class="category-strip" id="filterRow" aria-label="Filter by category">
-      <button class="filter-chip is-active" type="button" data-filter="All" aria-pressed="true">All <span>12</span></button>
-      <button class="filter-chip" type="button" data-filter="Illustration" aria-pressed="false">Illustration <span>3</span></button>
-      <button class="filter-chip" type="button" data-filter="UI" aria-pressed="false">Interface <span>2</span></button>
-      <button class="filter-chip" type="button" data-filter="Background" aria-pressed="false">Backgrounds <span>3</span></button>
-      <button class="filter-chip" type="button" data-filter="Typography" aria-pressed="false">Typography <span>2</span></button>
-      <button class="filter-chip" type="button" data-filter="Motion" aria-pressed="false">Motion <span>2</span></button>
-      <span class="filter-status" id="filterStatus" role="status" aria-live="polite" aria-atomic="true">12 resources</span>
-    </div>
-    <div class="gallery-heading"><div><span class="gallery-eyebrow">THE COLLECTION</span><h2 id="collectionTitle">Good things, gathered.</h2></div><span class="gallery-count" id="collectionCount">12 RESOURCES</span></div>
     <section class="asset-grid" id="assetGrid" aria-label="Design resources"></section>
     <div class="empty-state" id="emptyState" hidden><span>∅</span><h2>No matches this time.</h2><p>Try another search or clear the filters.</p><button class="reset-button" id="resetFilters" type="button">Reset filters <span class="mi mi-arrow-up-right" aria-hidden="true"></span></button></div>
     <div class="gallery-footer"><span>THAT'S THE INDEX (FOR NOW)</span><span>TAKE AN IDEA. MAKE IT YOURS.</span></div>
