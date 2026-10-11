@@ -33,7 +33,6 @@
   let soundsEnabled = true;
   try { soundsEnabled = localStorage.getItem("openform-sounds-v2") !== "off"; } catch (_) {}
   let audioContext = null;
-  let currentHoverTarget = null;
 
   function syncSoundButtons() {
     soundButtons.forEach(button => {
@@ -71,9 +70,6 @@
       oscillator.stop(now + duration + 0.01);
     } catch (_) {}
   }
-  function playHoverSound() {
-    playTone(720, 980, 0.045, 0.009, "sine");
-  }
   function playClickSound() {
     playTone(460, 260, 0.068, 0.022, "triangle");
     playTone(1050, 720, 0.035, 0.0045, "sine");
@@ -97,18 +93,6 @@
     }
   }));
   const interactiveSelector = "a, button, select, input, textarea, [role='button'], .asset-card";
-  document.addEventListener("pointerover", event => {
-    if (event.pointerType !== "mouse") return;
-    const target = event.target instanceof Element ? event.target.closest(interactiveSelector) : null;
-    if (!target || target === currentHoverTarget) return;
-    currentHoverTarget = target;
-    // Sound is silent until a real gesture has unlocked the AudioContext.
-    if (audioContext && audioContext.state === "running") playHoverSound();
-  });
-  document.addEventListener("pointerout", event => {
-    const target = event.target instanceof Element ? event.target.closest(interactiveSelector) : null;
-    if (target && !target.contains(event.relatedTarget) && currentHoverTarget === target) currentHoverTarget = null;
-  });
   document.addEventListener("pointerdown", event => {
     const target = event.target instanceof Element ? event.target.closest(interactiveSelector) : null;
     if (target) unlockAndClick();
