@@ -106,7 +106,7 @@
     search?.addEventListener("input",()=>{query=search.value.trim();render()});
     clear?.addEventListener("click",()=>{search.value="";query="";render();search.focus()});
     $("#sortSelect")?.addEventListener("change",render);
-    $(".filter-chip, .sidebar-filter").forEach(btn=>btn.addEventListener("click",()=>{activeFilter=btn.dataset.filter;render()}));
+    $$(".filter-chip, .sidebar-filter").forEach(btn=>btn.addEventListener("click",()=>{activeFilter=btn.dataset.filter;render()}));
     $("#resetFilters")?.addEventListener("click",()=>{activeFilter="All";query="";if(search)search.value="";render()});
     grid.addEventListener("click",e=>{const card=e.target.closest(".asset-card");if(card)openAsset(card.dataset.id)});
     grid.addEventListener("keydown",e=>{if((e.key==="Enter"||e.key===" ")&&e.target.classList.contains("asset-card")){e.preventDefault();openAsset(e.target.dataset.id)}});
