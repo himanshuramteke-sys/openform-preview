@@ -6,7 +6,7 @@
 <title>Openform — A place to start something</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css?v=20261011-10"><script src="app.js?v=20261011-7" defer></script>
+<link rel="stylesheet" href="styles.css?v=20261011-11"><script src="app.js?v=20261011-8" defer></script>
 </head>
 <body class="home-page">
 <div class="ambient-ribbon ribbon-one" aria-hidden="true"></div><div class="ambient-ribbon ribbon-two" aria-hidden="true"></div>
@@ -15,6 +15,7 @@
     <header class="hero-nav">
       <a class="wordmark" href="index.html" aria-label="Openform home"><span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i></span><span>openform<span class="wordmark-dot">.</span></span></a>
       <nav aria-label="Main navigation"><a href="library.html">Library</a><a href="#about">About</a></nav>
+      <button class="sound-toggle" data-sound-toggle type="button" aria-label="Mute interface sounds" aria-pressed="true" title="Interface sounds"><span class="sound-icon" aria-hidden="true"><span class="mi mi-volume-up"></span></span></button>
       <button class="theme-toggle hero-theme-toggle" id="themeToggle" type="button" aria-label="Switch colour theme" aria-pressed="false"><span class="theme-icon" aria-hidden="true"><span class="mi mi-moon"></span></span></button>
       <a class="nav-cta" href="library.html">Explore the index <span class="mi mi-arrow-up-right" aria-hidden="true"></span></a>
     </header>
@@ -31,7 +32,7 @@
       </aside>
     </div>
     <div class="hero-field" aria-hidden="true">
-      <div class="field-colour"></div>
+      <iframe id="heroGradientEmbed" class="hero-gradient-embed" title="Animated Openform gradient background" src="https://backgrounds.supply/gradient-lab/embed#s=eyJtIjoiY3VydGFpbnMiLCJjIjpbIiNlYWYxZmYiLCIjNzE5YmYwIiwiIzQzODZmNSIsIiM1NWNiZWEiLCIjYjhlZmRmIiwiI2RjZGZmYiIsIiNmM2Y2ZmIiwiI2Y3ZjhmYyJdLCJvIjpbWzAsMF0sWzAsMF0sWzAsMF0sWzAsMF0sWzAsMF0sWzAsMF0sWzAsMF0sWzAsMF1dLCJuIjo2LCJiIjoxLCJrIjoxLCJzIjoxLCJnIjowLjAxMiwicCI6eyJ1X3ZhcmlhbnQiOjAsInVfZnJvbSI6MCwidV9jb3VudCI6My4yLCJ1X3JheUNvbnRyYXN0IjoxLjcsInVfbGVuZ3RoIjowLjc1LCJ1X3N0cmVuZ3RoIjoxLjEsInVfZ2xvdyI6MC41LCJ1X3N3YXkiOjAuMTUsInVfc3BhY2luZyI6NC41LCJ1X3RoaWNrbmVzcyI6MC40LCJ1X3NlZWQiOjE5LCJ1X3NwZWVkIjowLjF9LCJ2IjoyLCJwbCI6eyJzIjoib2tsYWIifSwiZngiOnsiZ3QiOiJmaWxtIn19" data-light-src="https://backgrounds.supply/gradient-lab/embed#s=eyJtIjoiY3VydGFpbnMiLCJjIjpbIiNlYWYxZmYiLCIjNzE5YmYwIiwiIzQzODZmNSIsIiM1NWNiZWEiLCIjYjhlZmRmIiwiI2RjZGZmYiIsIiNmM2Y2ZmIiwiI2Y3ZjhmYyJdLCJvIjpbWzAsMF0sWzAsMF0sWzAsMF0sWzAsMF0sWzAsMF0sWzAsMF0sWzAsMF0sWzAsMF1dLCJuIjo2LCJiIjoxLCJrIjoxLCJzIjoxLCJnIjowLjAxMiwicCI6eyJ1X3ZhcmlhbnQiOjAsInVfZnJvbSI6MCwidV9jb3VudCI6My4yLCJ1X3JheUNvbnRyYXN0IjoxLjcsInVfbGVuZ3RoIjowLjc1LCJ1X3N0cmVuZ3RoIjoxLjEsInVfZ2xvdyI6MC41LCJ1X3N3YXkiOjAuMTUsInVfc3BhY2luZyI6NC41LCJ1X3RoaWNrbmVzcyI6MC40LCJ1X3NlZWQiOjE5LCJ1X3NwZWVkIjowLjF9LCJ2IjoyLCJwbCI6eyJzIjoib2tsYWIifSwiZngiOnsiZ3QiOiJmaWxtIn19" data-dark-src="https://backgrounds.supply/gradient-lab/embed#s=eyJtIjoiY3VydGFpbnMiLCJjIjpbIiMxMDE1MWYiLCIjMWUyYjRiIiwiIzMxNWZkNSIsIiM0Mzg2ZjUiLCIjMjJiZGQxIiwiIzllZTNkNyIsIiM5ZDllZmYiLCIjMTAxNTFmIl0sIm8iOltbMCwwXSxbMCwwXSxbMCwwXSxbMCwwXSxbMCwwXSxbMCwwXSxbMCwwXSxbMCwwXV0sIm4iOjYsImIiOjEsImsiOjEsInMiOjEsImciOjAuMDEyLCJwIjp7InVfdmFyaWFudCI6MCwidV9mcm9tIjowLCJ1X2NvdW50IjozLjIsInVfcmF5Q29udHJhc3QiOjEuNywidV9sZW5ndGgiOjAuNzUsInVfc3RyZW5ndGgiOjEuMSwidV9nbG93IjowLjUsInVfc3dheSI6MC4xNSwidV9zcGFjaW5nIjo0LjUsInVfdGhpY2tuZXNzIjowLjQsInVfc2VlZCI6MTksInVfc3BlZWQiOjAuMX0sInYiOjIsInBsIjp7InMiOiJva2xhYiJ9LCJmeCI6eyJndCI6ImZpbG0ifX0=" loading="eager" tabindex="-1" aria-hidden="true" allow="fullscreen" referrerpolicy="strict-origin-when-cross-origin"></iframe>
       <div class="field-grid"></div>
       <span class="field-caption">OPENFORM / DESIGN RESOURCES</span><span class="field-coordinates">DESIGN / PLAY / REMIX</span>
     </div>

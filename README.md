@@ -36,3 +36,7 @@ The homepage uses a full-width, open hero with a CSS mesh gradient inspired by G
 
 ## Type pairing
 Cormorant Garamond for expressive display typography and DM Sans for readable interface/body text, based on the supplied Fontpair reference.
+
+
+## Gradient and interaction sounds
+The homepage embeds Backgrounds Supply Gradient Lab using a recoloured “curtains” preset, with a slightly faster speed and separate light/dark palettes. Small hover and click sounds are synthesized with the Web Audio API and can be muted with the speaker toggle.

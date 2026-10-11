@@ -95,3 +95,10 @@ Openform is an open, community-first index of useful design resources and visual
 - Display serif: Cormorant Garamond (regular and italic).
 - Interface/body sans: DM Sans (400–700).
 - The pairing follows the supplied Fontpair reference. Keep the serif for editorial headlines and expressive display moments; use DM Sans for body copy, navigation, filters, metadata, and controls.
+
+
+## 1.0 — Gradient Lab and interaction sound
+- Hero background embeds the provided Backgrounds Supply Gradient Lab “curtains” configuration, recoloured with Openform blue/cyan/mint/lavender stops.
+- Animation speed increases from 0.07 to 0.10. Light/dark mode switches between dedicated embedded palettes.
+- Page content uses the same responsive gutter token and maximum content width to keep the header, hero, idea section, featured resources and footer aligned.
+- Hover and click feedback sounds are synthesized locally through Web Audio; no third-party sound assets are copied or downloaded. The sound toggle is persistent, and browsers unlock audio only after a user gesture.

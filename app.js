@@ -4,6 +4,7 @@
   const themeButtons = [$("#themeToggle"), $("#themeToggleMobile")].filter(Boolean);
   const mobileMenu = $("#mobileMenu");
   try { if (localStorage.getItem("openform-theme") === "dark") document.body.classList.add("dark"); } catch (_) {}
+  const heroGradientFrame = $("#heroGradientEmbed");
   function syncTheme() {
     const dark = document.body.classList.contains("dark");
     themeButtons.forEach(button => {
@@ -12,6 +13,10 @@
       button.setAttribute("aria-pressed", String(dark));
       button.setAttribute("aria-label", dark ? "Switch to light theme" : "Switch to dark theme");
     });
+    if (heroGradientFrame) {
+      const gradientSrc = dark ? heroGradientFrame.dataset.darkSrc : heroGradientFrame.dataset.lightSrc;
+      if (gradientSrc && heroGradientFrame.getAttribute("src") !== gradientSrc) heroGradientFrame.setAttribute("src", gradientSrc);
+    }
   }
   syncTheme();
   themeButtons.forEach(button => button.addEventListener("click", () => {
@@ -19,6 +24,92 @@
     try { localStorage.setItem("openform-theme", document.body.classList.contains("dark") ? "dark" : "light"); } catch (_) {}
     syncTheme();
   }));
+
+  // Tiny original interface sounds synthesized locally with Web Audio (no sound-file downloads).
+  const soundButtons = $("[data-sound-toggle]");
+  let soundsEnabled = true;
+  try { soundsEnabled = localStorage.getItem("openform-sounds") !== "off"; } catch (_) {}
+  let audioContext = null;
+  let currentHoverTarget = null;
+
+  function syncSoundButtons() {
+    soundButtons.forEach(button => {
+      const icon = $(".sound-icon", button);
+      if (icon) icon.innerHTML = '<span class="mi mi-' + (soundsEnabled ? "volume-up" : "volume-mute") + '" aria-hidden="true"></span>';
+      button.setAttribute("aria-pressed", String(soundsEnabled));
+      button.setAttribute("aria-label", soundsEnabled ? "Mute interface sounds" : "Enable interface sounds");
+      button.title = soundsEnabled ? "Mute interface sounds" : "Enable interface sounds";
+    });
+  }
+  function getAudioContext() {
+    if (!soundsEnabled) return null;
+    const Context = window.AudioContext || window.webkitAudioContext;
+    if (!Context) return null;
+    if (!audioContext) audioContext = new Context();
+    if (audioContext.state === "suspended") audioContext.resume().catch(() => {});
+    return audioContext;
+  }
+  function playTone(from, to, duration, volume, type) {
+    const ctx = audioContext;
+    if (!soundsEnabled || !ctx || ctx.state !== "running") return;
+    try {
+      const now = ctx.currentTime;
+      const oscillator = ctx.createOscillator();
+      const gain = ctx.createGain();
+      oscillator.type = type || "sine";
+      oscillator.frequency.setValueAtTime(from, now);
+      oscillator.frequency.exponentialRampToValueAtTime(Math.max(40, to), now + duration * 0.72);
+      gain.gain.setValueAtTime(0.0001, now);
+      gain.gain.exponentialRampToValueAtTime(volume, now + Math.min(0.006, duration * 0.2));
+      gain.gain.exponentialRampToValueAtTime(0.0001, now + duration);
+      oscillator.connect(gain);
+      gain.connect(ctx.destination);
+      oscillator.start(now);
+      oscillator.stop(now + duration + 0.01);
+    } catch (_) {}
+  }
+  function playHoverSound() {
+    playTone(720, 980, 0.045, 0.009, "sine");
+  }
+  function playClickSound() {
+    playTone(460, 260, 0.068, 0.022, "triangle");
+    playTone(1050, 720, 0.035, 0.0045, "sine");
+  }
+  function unlockAndClick() {
+    if (!soundsEnabled) return;
+    const ctx = getAudioContext();
+    if (!ctx) return;
+    if (ctx.state === "running") playClickSound();
+    else ctx.resume().then(() => { if (soundsEnabled) playClickSound(); }).catch(() => {});
+  }
+  syncSoundButtons();
+  soundButtons.forEach(button => button.addEventListener("click", () => {
+    soundsEnabled = !soundsEnabled;
+    try { localStorage.setItem("openform-sounds", soundsEnabled ? "on" : "off"); } catch (_) {}
+    syncSoundButtons();
+    if (soundsEnabled) {
+      const ctx = getAudioContext();
+      if (ctx && ctx.state === "running") playClickSound();
+      else if (ctx) ctx.resume().then(() => { if (soundsEnabled) playClickSound(); }).catch(() => {});
+    }
+  }));
+  const interactiveSelector = "a, button, select, [role='button'], .asset-card";
+  document.addEventListener("pointerover", event => {
+    if (event.pointerType !== "mouse") return;
+    const target = event.target instanceof Element ? event.target.closest(interactiveSelector) : null;
+    if (!target || target === currentHoverTarget) return;
+    currentHoverTarget = target;
+    // Sound is silent until a real gesture has unlocked the AudioContext.
+    if (audioContext && audioContext.state === "running") playHoverSound();
+  });
+  document.addEventListener("pointerout", event => {
+    const target = event.target instanceof Element ? event.target.closest(interactiveSelector) : null;
+    if (target && !target.contains(event.relatedTarget) && currentHoverTarget === target) currentHoverTarget = null;
+  });
+  document.addEventListener("pointerdown", event => {
+    const target = event.target instanceof Element ? event.target.closest(interactiveSelector) : null;
+    if (target) unlockAndClick();
+  }, true);
   mobileMenu?.addEventListener("click", () => {
     const nav = $(".main-nav");
     if (!nav) return;
