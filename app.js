@@ -1,25 +1,24 @@
 (() => {
   const $ = (s, root = document) => root.querySelector(s);
   const $$ = (s, root = document) => [...root.querySelectorAll(s)];
-  const themeButton = $("#themeToggle");
+  const themeButtons = [$("#themeToggle"), $("#themeToggleMobile")].filter(Boolean);
   const mobileMenu = $("#mobileMenu");
-
-  try {
-    if (localStorage.getItem("openform-theme") === "dark") document.body.classList.add("dark");
-  } catch (_) {}
+  try { if (localStorage.getItem("openform-theme") === "dark") document.body.classList.add("dark"); } catch (_) {}
   function syncTheme() {
-    if (!themeButton) return;
     const dark = document.body.classList.contains("dark");
-    $(".theme-icon", themeButton).textContent = dark ? "☼" : "◐";
-    themeButton.setAttribute("aria-pressed", String(dark));
-    themeButton.setAttribute("aria-label", dark ? "Switch to light theme" : "Switch to dark theme");
+    themeButtons.forEach(button => {
+      const icon = $(".theme-icon", button);
+      if (icon) icon.textContent = dark ? "☼" : "◐";
+      button.setAttribute("aria-pressed", String(dark));
+      button.setAttribute("aria-label", dark ? "Switch to light theme" : "Switch to dark theme");
+    });
   }
   syncTheme();
-  themeButton?.addEventListener("click", () => {
+  themeButtons.forEach(button => button.addEventListener("click", () => {
     document.body.classList.toggle("dark");
     try { localStorage.setItem("openform-theme", document.body.classList.contains("dark") ? "dark" : "light"); } catch (_) {}
     syncTheme();
-  });
+  }));
   mobileMenu?.addEventListener("click", () => {
     const nav = $(".main-nav");
     if (!nav) return;
@@ -43,16 +42,16 @@
     {id:"type-motion",title:"Type in motion",category:"Motion",format:"SVG",tags:["Motion","Typography","Kinetic"],description:"A kinetic typography concept sheet and starting point for motion studies.",kind:"kinetic"}
   ];
 
-  function previewMarkup(kind) {
-    switch(kind) {
-      case "shape": return '<div class="art-sample sample-shape"><span class="sample-label">FORM STUDY / 001</span><div class="sample-circle"></div><div class="sample-pillar"></div><div class="sample-ring"></div><span class="sample-footer">GEOMETRY IS A LANGUAGE.</span></div>';
-      case "soft": return '<div class="art-sample sample-soft"><div class="sample-blob blob-a"></div><div class="sample-blob blob-b"></div><div class="sample-blob blob-c"></div><span>SOFT<br>MATTER</span><small>COLOR FIELD STUDY / 04</small></div>';
-      case "type": return '<div class="art-sample sample-type"><small>OPENFORM / TYPE STUDY</small><strong>Aa<span>!</span></strong><label>DISPLAY / VARIABLE / 2026</label></div>';
-      case "orbit": return '<div class="art-sample sample-orbit"><svg viewBox="0 0 500 360" aria-label="Orbit illustration"><rect width="500" height="360" fill="#292927"/><g fill="none" stroke="#f2f2ef" stroke-width="2"><ellipse cx="250" cy="180" rx="160" ry="65" transform="rotate(-35 250 180)"/><ellipse cx="250" cy="180" rx="160" ry="65" transform="rotate(35 250 180)"/><ellipse cx="250" cy="180" rx="160" ry="65" transform="rotate(90 250 180)"/></g><circle cx="250" cy="180" r="47" fill="#777772"/><circle cx="105" cy="135" r="12" fill="#e4e4e0"/><circle cx="350" cy="88" r="9" fill="#b8b8b1"/><circle cx="250" cy="180" r="10" fill="#f2f2ef"/></svg></div>';
+  function previewMarkup(kind, id) {
+    switch (kind) {
+      case "shape": return '<div class="art-sample sample-shape"><span class="sample-label">FORM STUDY / 001</span><div class="sample-circle"></div><div class="sample-pillar"></div><div class="sample-ring"></div><span class="sample-footer">GEOMETRY / LAYER / PLAY</span></div>';
+      case "soft": return '<div class="art-sample sample-soft"><div class="sample-blob blob-a"></div><div class="sample-blob blob-b"></div><div class="sample-blob blob-c"></div><span>SOFT<br>MATTER</span><small>FIELD STUDY / 04</small></div>';
+      case "type": return id === "type-specimen" ? '<div class="art-sample sample-type specimen-variant"><small>OPENFORM / TYPE STUDY</small><strong>Rr<span>?</span></strong><label>REGULAR / ITALIC / CONTRAST</label><div class="type-specimen-line"></div></div>' : '<div class="art-sample sample-type"><small>OPENFORM / TYPE STUDY</small><strong>Aa<span>!</span></strong><label>FORM / FOLLOWS / FEELING</label></div>';
+      case "orbit": return '<div class="art-sample sample-orbit"><svg viewBox="0 0 500 360" role="img" aria-label="Orbit illustration"><rect width="500" height="360" fill="#172238"/><g fill="none" stroke="#a7e5f2" stroke-width="2"><ellipse cx="250" cy="180" rx="160" ry="65" transform="rotate(-35 250 180)"/><ellipse cx="250" cy="180" rx="160" ry="65" transform="rotate(35 250 180)"/><ellipse cx="250" cy="180" rx="160" ry="65" transform="rotate(90 250 180)"/></g><circle cx="250" cy="180" r="48" fill="#4a7dec"/><circle cx="250" cy="180" r="15" fill="#d5f58e"/><circle cx="105" cy="135" r="12" fill="#ff8977"/><circle cx="350" cy="88" r="9" fill="#f8f6ef"/></svg></div>';
       case "ui": return '<div class="art-sample sample-ui"><div class="sample-ui-card"><div class="sample-ui-top"><i></i><i></i><i></i><span>DAILY / 07</span></div><small>YOUR SPACE, YOUR PACE</small><strong>Make room<br>for ideas.</strong><div class="sample-ui-rule"></div><b>Get started ↗</b></div></div>';
       case "fields": return '<div class="art-sample sample-fields"><div></div><div></div><div></div><span>FIELD<br>NOTES</span></div>';
-      case "lines": return '<div class="art-sample sample-lines"><svg viewBox="0 0 500 360"><rect width="500" height="360" fill="#222220"/>' + Array.from({length:11},(_,i)=>'<path d="M -20 '+(40+i*27)+' C 120 '+(-30+i*30)+', 180 '+(120+i*12)+', 290 '+(40+i*26)+' S 420 '+(90+i*24)+', 530 '+(15+i*28)+'" fill="none" stroke="'+(i%2?'#888883':'#e4e4e0')+'" stroke-width="'+(i%3===0?3:1.4)+'" opacity="'+(.55+i*.035)+'"/>').join("") + '</svg></div>';
-      case "icons": return '<div class="art-sample sample-icons"><div class="icon-grid">'+["＋","↗","○","✳","⌘","↘","□","×","⌕","↻","△","→"].map((x,i)=>'<span style="transform:rotate('+((i%3-1)*8)+'deg)">'+x+'</span>').join("")+'</div><small>12 MARKS / SVG</small></div>';
+      case "lines": return '<div class="art-sample sample-lines"><svg viewBox="0 0 500 360" role="img" aria-label="Abstract motion lines"><rect width="500" height="360" fill="#172238"/>' + Array.from({length:14},(_,i)=>'<path d="M -20 '+(35+i*23)+' C 80 '+(i%3?25:210)+', 180 '+(i%2?300:90)+', 290 '+(45+i*21)+' S 420 '+(75+i*17)+', 530 '+(10+i*25)+'" fill="none" stroke="'+(["#a7e5f2","#85a6ff","#ff8977","#eef5ff"][i%4])+'" stroke-width="'+(i%4===0?3:1.5)+'" opacity="'+(.6+i*.025)+'"/>').join("") + '</svg></div>';
+      case "icons": return '<div class="art-sample sample-icons"><div class="icon-grid">'+["＋","↗","○","✳","⌘","↘","□","×","⌕","↻","△","→"].map((x,i)=>'<span style="transform:rotate('+((i%3-1)*6)+'deg)">'+x+'</span>').join("")+'</div><small>12 MARKS / SVG</small></div>';
       case "paper": return '<div class="art-sample sample-paper"><div class="paper-circle"></div><div class="paper-arch"></div><div class="paper-cut"></div><div class="paper-label">CUT / FOLD / REPEAT</div></div>';
       case "kinetic": return '<div class="art-sample sample-kinetic"><small>MOTION TEST / 02</small><strong>MOVE<br><em>WITH</em><br>INTENT.</strong><span>TYPE / TIMING / RHYTHM</span></div>';
       case "grid": return '<div class="art-sample sample-grid"><div class="grid-lines"></div><small>NOTES FROM THE MARGIN / 008</small><strong>Make<br>space for<br><em>better ideas.</em></strong><span>EDITORIAL GRID STUDY</span></div>';
@@ -64,7 +63,7 @@
   const modal = $("#assetModal");
   let activeFilter = "All", query = "", previousFocus = null;
   const search = $("#searchInput"), clear = $("#clearSearch"), empty = $("#emptyState");
-  const cardMarkup = (a, i) => '<article class="asset-card" tabindex="0" role="button" aria-label="View '+a.title+', '+a.category+', '+a.format+'" data-id="'+a.id+'" style="animation-delay:'+Math.min(i*30,240)+'ms"><div class="asset-preview">'+previewMarkup(a.kind)+'<span class="asset-open" aria-hidden="true">↗</span><span class="preview-label">'+String(i+1).padStart(2,"0")+' / '+a.category.toUpperCase()+'</span></div><div class="asset-meta"><div><h3>'+a.title+'</h3><p>'+a.format+' · Free sample</p></div><span class="asset-category">'+a.category+'</span></div></article>';
+  const cardMarkup = (a, i) => '<article class="asset-card" tabindex="0" role="button" aria-label="View '+a.title+', '+a.category+', '+a.format+'" data-id="'+a.id+'" data-kind="'+a.kind+'" style="animation-delay:'+Math.min(i*25,180)+'ms"><div class="asset-preview">'+previewMarkup(a.kind,a.id)+'<span class="preview-label">'+String(i+1).padStart(2,"0")+' / '+a.category.toUpperCase()+'</span><span class="asset-open" aria-hidden="true">↗</span></div><div class="asset-meta"><div><h3>'+a.title+'</h3><p>'+a.format+' · ORIGINAL SAMPLE</p></div><span class="asset-category">'+a.category+'</span></div></article>';
 
   function render() {
     if (!grid) return;
@@ -79,13 +78,13 @@
     if (empty) empty.hidden = list.length > 0;
     grid.hidden = list.length === 0;
     if (clear) clear.style.display = query ? "grid" : "none";
-    $$(".filter-chip").forEach(b=>b.setAttribute("aria-pressed",String(b.dataset.filter===activeFilter)));
+    $(".filter-chip, .sidebar-filter").forEach(b=>{const active=b.dataset.filter===activeFilter;b.setAttribute("aria-pressed",String(active));b.classList.toggle("is-active",active);b.classList.toggle("active",active);});
   }
   function openAsset(id) {
     const a = assets.find(x=>x.id===id);
     if (!a || !modal) return;
     previousFocus = document.activeElement;
-    $("#modalPreview").innerHTML = previewMarkup(a.kind);
+    $("#modalPreview").innerHTML = previewMarkup(a.kind,a.id);
     $("#modalEyebrow").textContent = a.category.toUpperCase()+" / "+a.format+" / FREE SAMPLE";
     $("#modalTitle").textContent = a.title;
     $("#modalDescription").textContent = a.description;
@@ -107,7 +106,7 @@
     search?.addEventListener("input",()=>{query=search.value.trim();render()});
     clear?.addEventListener("click",()=>{search.value="";query="";render();search.focus()});
     $("#sortSelect")?.addEventListener("change",render);
-    $$(".filter-chip").forEach(btn=>btn.addEventListener("click",()=>{activeFilter=btn.dataset.filter;render()}));
+    $(".filter-chip, .sidebar-filter").forEach(btn=>btn.addEventListener("click",()=>{activeFilter=btn.dataset.filter;render()}));
     $("#resetFilters")?.addEventListener("click",()=>{activeFilter="All";query="";if(search)search.value="";render()});
     grid.addEventListener("click",e=>{const card=e.target.closest(".asset-card");if(card)openAsset(card.dataset.id)});
     grid.addEventListener("keydown",e=>{if((e.key==="Enter"||e.key===" ")&&e.target.classList.contains("asset-card")){e.preventDefault();openAsset(e.target.dataset.id)}});
@@ -120,8 +119,8 @@
   modal?.addEventListener("click",e=>{if(e.target===modal)closeAsset()});
   function svgFor(a) {
     const palette = {
-      paper: "#F5F3ED", ink: "#1B1B19", blue: "#4646E8",
-      coral: "#F35D43", acid: "#C7F464", lavender: "#E4DFFB", white: "#FFFDF7"
+      paper: "#F5F4F0", ink: "#191A1B", blue: "#4386F5",
+      coral: "#FF8977", acid: "#B8EFDF", lavender: "#DCDFFB", white: "#FCFCFA"
     };
     let background = palette.paper, shapes = "";
     if (a.kind === "shape") {
