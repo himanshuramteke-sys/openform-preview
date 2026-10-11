@@ -40,3 +40,7 @@ Cormorant Garamond for expressive display typography and DM Sans for readable in
 
 ## Gradient and interaction sounds
 The homepage embeds Backgrounds Supply Gradient Lab using a recoloured “curtains” preset, with a slightly faster speed and separate light/dark palettes. Small hover and click sounds are synthesized with the Web Audio API and can be muted with the speaker toggle.
+
+
+## Credits
+Made by [Himanshu Ramteke](https://himanshuramteke.framer.website/).

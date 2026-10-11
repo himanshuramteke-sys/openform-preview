@@ -467,3 +467,24 @@ body.dark .sound-toggle:hover{background:#303b50;border-color:#6989c1}
 @media(prefers-reduced-motion:reduce){
   .hero-gradient-embed{visibility:visible}
 }
+
+/* Footer/hero finish: simpler logo line, clean embed edge, faster curtain movement and darker top in dark mode. */
+.hero-field{overflow:hidden}
+.hero-gradient-embed{height:100%;min-height:100%}
+.field-caption,.field-coordinates{display:none!important}
+.footer-brand-line{margin-top:26px;padding-top:0;border-top:0}
+.footer-brand-line p{display:none!important}
+.footer-credit{display:inline-flex;align-items:center;gap:6px;color:#d4dbe5;font-size:10px;letter-spacing:.035em;white-space:nowrap}
+.footer-credit .mi{width:12px;height:12px;color:#a6c6ff}
+.footer-credit:hover{color:#a6c6ff}
+.footer-bottom{flex-wrap:wrap}
+body.dark.home-page .hero-field::after{background:linear-gradient(180deg,rgba(0,0,0,.48) 0%,rgba(2,5,12,.30) 20%,rgba(6,10,20,.12) 38%,transparent 58%)}
+@media(max-width:760px){
+  .footer-credit{font-size:9px}
+  .footer-bottom{column-gap:16px;row-gap:12px}
+}
+@media(max-width:520px){
+  .footer-bottom{align-items:flex-start}
+  .footer-bottom .footer-credit{width:100%;order:3}
+  .footer-bottom a[href="#top"],.footer-bottom a[href="#"]{margin-left:auto}
+}

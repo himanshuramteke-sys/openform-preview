@@ -102,3 +102,12 @@ Openform is an open, community-first index of useful design resources and visual
 - Animation speed increases from 0.07 to 0.10. Light/dark mode switches between dedicated embedded palettes.
 - Page content uses the same responsive gutter token and maximum content width to keep the header, hero, idea section, featured resources and footer aligned.
 - Hover and click feedback sounds are synthesized locally through Web Audio; no third-party sound assets are copied or downloaded. The sound toggle is persistent, and browsers unlock audio only after a user gesture.
+
+
+## 1.2 — Final footer and gradient cleanup
+- Removed the duplicate Community links, while retaining the primary footer CTA.
+- Removed the descriptive tagline beside the Openform wordmark and its dividing line.
+- Added a “Made by Himanshu Ramteke” credit linked to the portfolio.
+- Removed overlapping custom gradient captions so the Gradient Lab attribution stays legible.
+- Increased curtain movement speed to 0.18. Dark mode starts with deeper near-black colour stops and a more pronounced dark fade at the top.
+- Rebuilt both Gradient Lab presets from valid JSON, preserving the same settings structure.
