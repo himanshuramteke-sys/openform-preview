@@ -30,8 +30,8 @@
 
   // Tiny original interface sounds synthesized locally with Web Audio (no sound-file downloads).
   const soundButtons = $$("[data-sound-toggle]");
-  let soundsEnabled = false;
-  try { soundsEnabled = localStorage.getItem("openform-sounds") === "on"; } catch (_) {}
+  let soundsEnabled = true;
+  try { soundsEnabled = localStorage.getItem("openform-sounds") !== "off"; } catch (_) {}
   let audioContext = null;
   let currentHoverTarget = null;
 
@@ -40,8 +40,8 @@
       const icon = $(".sound-icon", button);
       if (icon) icon.innerHTML = '<span class="mi mi-' + (soundsEnabled ? "volume-up" : "volume-mute") + '" aria-hidden="true"></span>';
       button.setAttribute("aria-pressed", String(soundsEnabled));
-      button.setAttribute("aria-label", "Interface sounds");
-      button.title = soundsEnabled ? "Mute interface sounds" : "Enable interface sounds";
+      button.setAttribute("aria-label", soundsEnabled ? "Turn interface sounds off" : "Turn interface sounds on");
+      button.title = soundsEnabled ? "Sound effects on. Click to mute" : "Sound effects off. Click to enable";
     });
   }
   function getAudioContext() {
@@ -96,7 +96,7 @@
       else if (ctx) ctx.resume().then(() => { if (soundsEnabled) playClickSound(); }).catch(() => {});
     }
   }));
-  const interactiveSelector = "a, button, select, [role='button'], .asset-card";
+  const interactiveSelector = "a, button, select, input, textarea, [role='button'], .asset-card";
   document.addEventListener("pointerover", event => {
     if (event.pointerType !== "mouse") return;
     const target = event.target instanceof Element ? event.target.closest(interactiveSelector) : null;
@@ -113,6 +113,12 @@
     const target = event.target instanceof Element ? event.target.closest(interactiveSelector) : null;
     if (target) unlockAndClick();
   }, true);
+  // Keyboard-triggered activations have no pointerdown, so provide the same feedback once.
+  document.addEventListener("click", event => {
+    if (event.detail !== 0) return;
+    const target = event.target instanceof Element ? event.target.closest(interactiveSelector) : null;
+    if (target && !target.hasAttribute("data-sound-toggle")) unlockAndClick();
+  });
   mobileMenu?.addEventListener("click", () => {
     const nav = $(".main-nav");
     if (!nav) return;

@@ -11,7 +11,7 @@ WCAG 2.2 Level AA, with relevant UXDT guidance for visual accessibility and usab
 - 44px practical targets for theme/sound controls, primary actions and resource-card affordances.
 - Search result count announced politely without announcing the full changing grid.
 - Resource cards with accessible names and keyboard activation; dialog with accessible name, close control, Escape dismissal, focus restoration and Tab trapping.
-- Sound effects off until opt-in; both toggle controls stay synchronized.
+- Sound effects play only in response to user interactions. They are enabled by default as requested, with synchronized toggles to mute them.
 - Reduced-motion and forced-colour modes hide the animated cross-origin gradient and show a static fallback.
 - Navigation and resource browsing reflow at narrow widths.
 
@@ -28,3 +28,9 @@ WCAG AA requires at least 4.5:1 contrast for normal text and 3:1 for large text,
 
 ## Contrast calculation snapshot (token-level)
 The selected body and muted text colours are above 4.5:1 against the corresponding flat light/dark surfaces. The light-mode hero display blue is set to a darker accessible accent. Because the embedded gradient changes over time and is cross-origin, the resulting hero must still be checked visually in a browser; the contrast overlay is intended to keep text above the required threshold across the canvas.
+
+
+## Latest visual refinements
+- Two hero information points use a restrained frosted-glass surface with separate light/dark colour values.
+- Navigation links are centred at wide desktop widths while remaining in normal flow at narrower widths.
+- The gradient has a CSS motion layer as well as the Gradient Lab animation, and both are disabled in reduced-motion mode.

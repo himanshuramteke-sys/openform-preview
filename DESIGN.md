@@ -120,3 +120,12 @@ Openform is an open, community-first index of useful design resources and visual
 - Added skip links, visible keyboard focus, a live result count, mobile navigation access at narrow widths, forced-colour styling and a static hero fallback for reduced-motion users.
 - Sound effects are opt-in by default; both sound controls stay in sync.
 - References: [WCAG 2.2](https://www.w3.org/TR/WCAG22/), [UXDT visual accessibility](https://www.uxdt.nic.in/guidelines/ux-design-guidelines/enhancing-visual-accessibility/), and [UXDT accessibility testing checklist](https://www.uxdt.nic.in/guidelines/ux-design-guidelines/accessibility-testing-checklist/).
+
+
+## 1.4 — Homepage interaction and composition polish
+- Centered the desktop Library/About links between the wordmark and right-side controls.
+- Converted the two hero information points into distinct, contrast-aware frosted cards for both themes.
+- Removed the secondary “What is Openform?” hero link and the “Take a look around” CTA; rewrote the idea paragraph in plain language.
+- Removed the duplicated footer wordmark and the unnecessary “Independent design resource library” bottom label.
+- Increased the Gradient Lab shader speed to 0.20 and added a restrained moving colour veil as a visible animation layer. Reduced-motion users still receive the static gradient.
+- Interface sounds default to on but only play in response to user interaction. Each sound control switches the icon/state, persists the preference, and supports pointer and keyboard activation.

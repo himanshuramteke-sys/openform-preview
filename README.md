@@ -48,3 +48,7 @@ Made by [Himanshu Ramteke](https://himanshuramteke.framer.website/).
 
 ## Accessibility
 This project targets WCAG 2.2 AA and applies relevant UXDT guidance for semantics, skip navigation, keyboard access, visible focus, readable contrast/type, touch targets, reduced motion, forced colours and live results. This is a code-level improvement pass, not a formal certification; manual screen-reader and zoom testing remains necessary. See [ACCESSIBILITY.md](ACCESSIBILITY.md).
+
+
+## Homepage polish
+The desktop navigation is centred; hero highlights use restrained frosted cards; redundant in-hero CTAs and footer labels are removed. The Gradient Lab curtain shader runs with a stronger speed setting plus a subtle CSS motion layer; reduced-motion settings disable the motion. User-triggered click/hover sounds are enabled by default but can be switched off.
