@@ -1212,3 +1212,24 @@ body.home-page a:focus-visible,body.home-page button:focus-visible{outline:2px s
  body.home-page .landing-wordmark,body.home-page .landing-nav a,body.home-page .landing-contact,body.home-page .landing-statement h1,body.home-page .landing-project-link a,body.home-page .landing-credit{color:CanvasText}
  body.home-page .landing-contact,body.home-page .landing-preferences{border:1px solid CanvasText;background:Canvas}body.home-page .landing-preview-art{border:1px solid CanvasText}
 }
+
+
+/* The supplied Gradient Lab Edgeglow preset is the hero background; CSS gradients remain as the no-motion fallback. */
+.landing-background{background:#eaf1ff}
+.landing-gradient-base,.landing-orb{z-index:0}
+.landing-gradient-embed{
+  position:absolute;z-index:1;inset:-1%;
+  display:block;width:102%;height:102%;min-height:100%;max-width:none;
+  aspect-ratio:auto;border:0;border-radius:0;
+  pointer-events:none;transform:translateZ(0);
+}
+.landing-gradient-wash{z-index:2;background:linear-gradient(105deg,rgba(249,251,255,.34) 0%,rgba(249,251,255,.17) 44%,rgba(247,249,255,.22) 100%)}
+.landing-grain{z-index:3}
+body.home-page.dark .landing-background{background:#03060c}
+body.home-page.dark .landing-gradient-wash{background:linear-gradient(105deg,rgba(3,6,12,.52) 0%,rgba(3,6,12,.24) 44%,rgba(3,6,12,.40) 100%)}
+body.home-page.dark .landing-grain{opacity:.12;mix-blend-mode:soft-light}
+@media(prefers-reduced-motion:reduce){
+  .landing-gradient-embed{display:none!important}
+  body.home-page .landing-gradient-base,body.home-page .landing-orb{animation:none!important}
+}
+@media(forced-colors:active){.landing-gradient-embed{display:none!important}}
