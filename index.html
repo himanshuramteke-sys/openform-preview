@@ -1,77 +1,58 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#efeeeb">
-<meta name="description" content="An open library of design resources, visual experiments, and useful things to make with.">
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#eaf1ff">
+<meta name="description" content="An independent design index for curious makers. Explore visual resources, experiments, and useful starting points.">
 <title>Openform — A place to start something</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css?v=20261012-2"><script src="app.js?v=20261012-3" defer></script>
+<link rel="stylesheet" href="styles.css?v=20261012-4"><script src="app.js?v=20261012-3" defer></script>
 </head>
 <body class="home-page">
 <a class="skip-link" href="#main-content">Skip to main content</a>
-<div class="ambient-ribbon ribbon-one" aria-hidden="true"></div><div class="ambient-ribbon ribbon-two" aria-hidden="true"></div>
 <main class="home-shell" id="main-content">
-  <section class="hero-panel" id="top">
-    <header class="hero-nav">
-      <a class="wordmark" href="index.html" aria-label="Openform home"><span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i></span><span>openform<span class="wordmark-dot">.</span></span></a>
-      <nav aria-label="Main navigation"><a href="library.html">Library</a><a href="#about">About</a></nav>
-      <button class="sound-toggle" data-sound-toggle type="button" aria-label="Interface sounds" aria-pressed="false" title="Interface sounds"><span class="sound-icon" aria-hidden="true"><span class="mi mi-volume-up"></span></span></button>
-      <button class="theme-toggle hero-theme-toggle" id="themeToggle" type="button" aria-label="Switch colour theme" aria-pressed="false"><span class="theme-icon" aria-hidden="true"><span class="mi mi-moon"></span></span></button>
-      <a class="nav-cta" href="library.html">Explore the index <span class="mi mi-arrow-up-right" aria-hidden="true"></span></a>
-    </header>
-    <div class="hero-content">
-      <div class="hero-main-copy">
-        <p class="eyebrow"><span class="eyebrow-dot"></span> AN OPEN INDEX FOR CURIOUS MAKERS</p>
-        <h1>Find your next<br><em>starting point.</em></h1>
-        <p class="hero-description">A growing library of design resources, visual experiments, and useful things to make with.</p>
-        <div class="hero-actions"><a class="button-primary" href="library.html">Browse the library <span class="mi mi-arrow-up-right" aria-hidden="true"></span></a></div>
-      </div>
-      <aside class="hero-aside" aria-label="About the library">
-        <div class="hero-aside-item"><span class="aside-icon"><span class="mi mi-globe" aria-hidden="true"></span></span><div><strong>Free to explore</strong><p>No paywall, no fuss. Just useful things to start from.</p></div></div>
-        <div class="hero-aside-item"><span class="aside-icon"><span class="mi mi-copy" aria-hidden="true"></span></span><div><strong>Made to be remixed</strong><p>Illustration, interfaces, type, motion, and more.</p></div></div>
-      </aside>
-    </div>
-    <div class="hero-field" aria-hidden="true">
-      <div class="field-static-gradient"></div>
-      <iframe id="heroGradientEmbed" class="hero-gradient-embed" title="Animated Openform gradient background" src="https://backgrounds.supply/gradient-lab/embed#s=eyJtIjoiY3VydGFpbnMiLCJjIjpbIiNlYWYxZmYiLCIjNzE5YmYwIiwiIzQzODZmNSIsIiM1NWNiZWEiLCIjYjhlZmRmIiwiI2RjZGZmYiIsIiNmM2Y2ZmIiwiI2Y3ZjhmYyJdLCJvIjpbWzAsMF0sWzAsMF0sWzAsMF0sWzAsMF0sWzAsMF0sWzAsMF0sWzAsMF0sWzAsMF1dLCJuIjo2LCJiIjoxLCJrIjoxLCJzIjoxLCJnIjowLjAxMiwicCI6eyJ1X3ZhcmlhbnQiOjAsInVfZnJvbSI6MCwidV9jb3VudCI6My4yLCJ1X3JheUNvbnRyYXN0IjoxLjcsInVfbGVuZ3RoIjowLjc1LCJ1X3N0cmVuZ3RoIjoxLjEsInVfZ2xvdyI6MC41LCJ1X3N3YXkiOjAuMTUsInVfc3BhY2luZyI6NC41LCJ1X3RoaWNrbmVzcyI6MC40LCJ1X3NlZWQiOjE5LCJ1X3NwZWVkIjowLjF9LCJ2IjoyLCJwbCI6eyJzIjoib2tsYWIifSwiZngiOnsiZ3QiOiJmaWxtIn19" data-light-src="https://backgrounds.supply/gradient-lab/embed#s=eyJtIjoiY3VydGFpbnMiLCJjIjpbIiNlYWYxZmYiLCIjNzE5YmYwIiwiIzQzODZmNSIsIiM1NWNiZWEiLCIjYjhlZmRmIiwiI2RjZGZmYiIsIiNmM2Y2ZmYiLCIjZjdmOGZjIl0sIm8iOltbMCwwXSxbMCwwXSxbMCwwXSxbMCwwXSxbMCwwXSxbMCwwXSxbMCwwXSxbMCwwXV0sIm4iOjYsImIiOjEsImsiOjEsInMiOjEsImciOjAuMDEyLCJwIjp7InVfdmFyaWFudCI6MCwidV9mcm9tIjowLCJ1X2NvdW50IjozLjIsInVfcmF5Q29udHJhc3QiOjEuNywidV9sZW5ndGgiOjAuNzUsInVfc3RyZW5ndGgiOjEuMSwidV9nbG93IjowLjUsInVfc3dheSI6MC4xNSwidV9zcGFjaW5nIjo0LjUsInVfdGhpY2tuZXNzIjowLjQsInVfc2VlZCI6MTksInVfc3BlZWQiOjAuMn0sInYiOjIsInBsIjp7InMiOiJva2xhYiJ9LCJmeCI6eyJndCI6ImZpbG0ifX0=" data-dark-src="https://backgrounds.supply/gradient-lab/embed#s=eyJtIjoiY3VydGFpbnMiLCJjIjpbIiMxMDE1MWYiLCIjMWUyYjRiIiwiIzMxNWZkNSIsIiM0Mzg2ZjUiLCIjMjJiZGQxIiwiIzllZTNkNyIsIiM5ZDllZmYiLCIjMTAxNTFmIl0sIm8iOltbMCwwXSxbMCwwXSxbMCwwXSxbMCwwXSxbMCwwXSxbMCwwXSxbMCwwXSxbMCwwXV0sIm4iOjYsImIiOjEsImsiOjEsInMiOjEsImciOjAuMDEyLCJwIjp7InVfdmFyaWFudCI6MCwidV9mcm9tIjowLCJ1X2NvdW50IjozLjIsInVfcmF5Q29udHJhc3QiOjEuNywidV9sZW5ndGgiOjAuNzUsInVfc3RyZW5ndGgiOjEuMSwidV9nbG93IjowLjUsInVfc3dheSI6MC4xNSwidV9zcGFjaW5nIjo0LjUsInVfdGhpY2tuZXNzIjowLjQsInVfc2VlZCI6MTksInVfc3BlZWQiOjAuMn0sInYiOjIsInBsIjp7InMiOiJva2xhYiJ9LCJmeCI6eyJndCI6ImZpbG0ifX0=" loading="eager" tabindex="-1" aria-hidden="true" allow="fullscreen" referrerpolicy="strict-origin-when-cross-origin"></iframe>
-      <div class="field-grid"></div>
-    </div>
-  </section>
-  <section class="about-strip" id="about" aria-labelledby="about-title">
-    <div class="about-copy">
-      <div class="about-headline">
-        <p class="eyebrow about-eyebrow">THE IDEA</p>
-        <h2 id="about-title">Less hunting.<br><em>More making.</em></h2>
-      </div>
-      <div class="about-description">
-        <p>Openform is a growing collection of useful design resources and experiments. Browse illustrations, interface pieces, type, motion, and visual ideas you can build on.</p>
-      </div>
-    </div>
-  </section>
-  <section class="home-selection" aria-labelledby="selection-title">
-    <div class="selection-heading"><div><p class="eyebrow">A FEW STARTING POINTS</p><h2 id="selection-title">Something to get into.</h2></div><a class="underlined-link" href="library.html">Browse all resources <span class="mi mi-arrow-up-right" aria-hidden="true"></span></a></div>
-    <div class="selection-grid">
-      <a class="selection-card selection-card-wide" href="library.html?resource=soft-forms"><div class="selection-art selection-art-shapes"><span class="art-index">ILLUSTRATION</span><div class="shape-disc"></div><div class="shape-cut"></div><div class="shape-loop"></div><span class="art-caption">FORM STUDY</span></div><div class="selection-info"><div><h3>Soft forms</h3><p>Organic shapes for flexible compositions.</p></div><span class="asset-format">SVG <span class="mi mi-arrow-up-right" aria-hidden="true"></span></span></div></a>
-      <a class="selection-card" href="library.html?resource=type-play"><div class="selection-art selection-art-type"><span class="art-index">TYPE STUDY</span><strong>Aa<span>!</span></strong><small>FORM<br>FOLLOWS<br>FEELING.</small><span class="art-caption">TYPE / PLAY / REPEAT</span></div><div class="selection-info"><div><h3>Type play</h3><p>Type as the main event.</p></div><span class="asset-format">SVG <span class="mi mi-arrow-up-right" aria-hidden="true"></span></span></div></a>
-      <a class="selection-card" href="library.html?resource=motion-lines"><div class="selection-art selection-art-motion"><span class="art-index">MOTION STUDY</span><div class="motion-ribbon"></div><div class="motion-orb"></div><span class="art-caption">RHYTHM IN A STILL FRAME.</span></div><div class="selection-info"><div><h3>Motion lines</h3><p>A visual rhythm to build on.</p></div><span class="asset-format">SVG <span class="mi mi-arrow-up-right" aria-hidden="true"></span></span></div></a>
-    </div>
-  </section>
-  
-<footer class="site-footer-design" id="footer">
-  <div class="footer-main footer-home-main">
-    <div class="footer-cta-block">
-      <p class="footer-eyebrow">GOOD THINGS ARE BETTER SHARED</p>
-      <h2>Find something.<br><em>Make it yours.</em></h2>
-      <a class="footer-primary-cta" href="library.html">Explore the library <span class="mi mi-arrow-up-right" aria-hidden="true"></span></a>
-
-    </div>
-    <nav class="footer-link-group" aria-label="Explore links"><span>EXPLORE</span><a href="library.html">All resources <span class="mi mi-arrow-up-right" aria-hidden="true"></span></a><a href="library.html#assetGrid">Illustration & graphics</a><a href="library.html#assetGrid">UI & components</a><a href="library.html#assetGrid">Type & motion</a></nav>
-    <nav class="footer-link-group" aria-label="Project links"><span>OPENFORM</span><a href="#about">About the project</a><a href="DESIGN.md">Design principles <span class="mi mi-arrow-up-right" aria-hidden="true"></span></a><a href="https://github.com/himanshuramteke-sys/openform-preview">Source code <span class="mi mi-arrow-up-right" aria-hidden="true"></span></a></nav>
-    <div class="footer-community"><span>COMMUNITY</span><p>A growing, independent library. Community submissions are coming later.</p></div>
+<section class="hero-panel landing-page" id="top" aria-labelledby="landing-title">
+  <div class="landing-background" aria-hidden="true">
+    <div class="landing-gradient-base"></div><span class="landing-orb landing-orb-one"></span><span class="landing-orb landing-orb-two"></span><span class="landing-orb landing-orb-three"></span><div class="landing-gradient-wash"></div><div class="landing-grain"></div>
   </div>
-  <div class="footer-bottom"><span>© 2026 OPENFORM</span><a class="footer-credit" href="https://himanshuramteke.framer.website/" target="_blank" rel="noopener noreferrer">Made by Himanshu Ramteke <span class="mi mi-arrow-up-right" aria-hidden="true"></span></a><a href="#top">BACK TO TOP <span class="mi mi-arrow-up" aria-hidden="true"></span></a></div>
-</footer>
+  <header class="landing-header">
+    <a class="landing-wordmark" href="index.html" aria-label="Openform home"><span class="landing-brand-mark" aria-hidden="true"><i></i><i></i><i></i></span><span>openform<span class="landing-wordmark-dot">.</span></span></a>
+    <nav class="landing-nav" aria-label="Main navigation">
+      <a href="library.html"><span>Library</span><small>Browse the index</small></a>
+      <a href="#about"><span>About</span><small>The idea behind it</small></a>
+      <a href="https://github.com/himanshuramteke-sys/openform-preview" target="_blank" rel="noopener noreferrer"><span>Source code</span><small>Built in public ↗</small></a>
+    </nav>
+    <div class="landing-header-note" aria-label="Openform principles"><span>AN OPEN DESIGN INDEX</span><span>FREE TO EXPLORE</span><span>MADE TO BE REMIXED</span></div>
+    <a class="landing-contact" href="library.html">Explore the library <span class="mi mi-arrow-up-right" aria-hidden="true"></span></a>
+  </header>
+  <section class="landing-intro" id="about" aria-labelledby="landing-about-title">
+    <div class="landing-philosophy">
+      <p class="landing-eyebrow" id="landing-about-title">OUR DESIGN PHILOSOPHY</p>
+      <p class="landing-philosophy-lead">Good work often starts with a useful little thing.</p>
+      <p class="landing-philosophy-copy">Openform brings together visual resources and experiments that help ideas get moving.</p>
+    </div>
+    <div class="landing-facts"><p>Independent design index</p><p>Built for curious makers</p><p class="landing-status"><span aria-hidden="true"></span> 12 starting points, and growing</p></div>
+    <span class="landing-signal" aria-hidden="true"></span>
+  </section>
+  <div class="landing-rule" aria-hidden="true"></div>
+  <div class="landing-stage">
+    <a class="landing-preview" href="library.html?resource=soft-forms" aria-label="Open the Soft forms sample">
+      <div class="landing-preview-art" aria-hidden="true"><span class="landing-preview-kicker">FORM STUDY / 001</span><span class="landing-shape landing-shape-disc"></span><span class="landing-shape landing-shape-cut"></span><span class="landing-shape landing-shape-ring"></span><span class="landing-preview-caption">GEOMETRY / LAYER / PLAY</span><span class="landing-preview-arrow"><span class="mi mi-arrow-up-right" aria-hidden="true"></span></span></div>
+      <span class="landing-preview-meta"><span>Soft forms</span><span>SVG / SAMPLE</span></span>
+    </a>
+    <div class="landing-statement">
+      <h1 id="landing-title">Good things start<br>with something<br><span>worth making.</span></h1>
+      <div class="landing-project-link"><p>A useful place to begin is all you need.</p><a href="library.html?resource=soft-forms">Start with a sample <span class="mi mi-arrow-up-right" aria-hidden="true"></span></a></div>
+    </div>
+  </div>
+  <div class="landing-footer">
+    <a class="landing-credit" href="https://himanshuramteke.framer.website/" target="_blank" rel="noopener noreferrer">Made by Himanshu Ramteke <span class="mi mi-arrow-up-right" aria-hidden="true"></span></a>
+    <div class="landing-preferences" aria-label="Site preferences"><span class="landing-preferences-label">Preferences</span>
+      <button class="sound-toggle landing-control" data-sound-toggle type="button" aria-label="Interface sounds" aria-pressed="false" title="Interface sounds"><span class="sound-icon" aria-hidden="true"><span class="mi mi-volume-up"></span></span></button>
+      <button class="theme-toggle landing-control" id="themeToggle" type="button" aria-label="Switch colour theme" aria-pressed="false" title="Switch colour theme"><span class="theme-icon" aria-hidden="true"><span class="mi mi-moon"></span></span></button>
+    </div>
+  </div>
+</section>
 </main>
 </body>
 </html>
