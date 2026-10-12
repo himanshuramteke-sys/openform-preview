@@ -1333,3 +1333,12 @@ body.home-page.dark .landing-grain{opacity:.12;mix-blend-mode:soft-light}
   .landing-preview-meta{font-size:13px}.landing-credit{font-size:11px}
 }
 @media(prefers-reduced-motion:reduce){.landing-preview-art,.landing-shape,.landing-preview-arrow{transition:none!important}}
+
+/* Keep the 2px typography increase consistent on small screens and inside carousel labels. */
+@media(max-width:760px){
+  .landing-preview-kicker,.landing-preview-caption{font-size:10px}
+  .landing-preview-meta span:last-child{font-size:11px}
+}
+.landing-ui-overline{font-size:10px}
+.landing-ui-action{font-size:11px}
+.landing-ui-window strong{font-size:32px}
