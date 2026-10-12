@@ -1469,3 +1469,22 @@ body.home-page.dark .landing-watermark-mask{
   body.home-page .landing-nav a,body.home-page .landing-nav a::after,body.home-page .landing-nav a span i,
   body.home-page .landing-contact,body.home-page .landing-contact-icon,body.home-page .landing-contact-icon .mi{transition:none!important}
 }
+
+
+/* Remove the Gradient Lab attribution by softly revealing our own animated gradient beneath that corner. */
+body.home-page .landing-gradient-embed{
+  -webkit-mask-image:radial-gradient(ellipse 450px 56px at 100% 100%,transparent 0%,transparent 73%,#000 100%);
+  mask-image:radial-gradient(ellipse 450px 56px at 100% 100%,transparent 0%,transparent 73%,#000 100%);
+  -webkit-mask-repeat:no-repeat;
+  mask-repeat:no-repeat;
+}
+body.home-page .landing-watermark-mask{display:none!important}
+@media(max-width:760px){
+  body.home-page .landing-gradient-embed{
+    -webkit-mask-image:radial-gradient(ellipse 300px 42px at 100% 100%,transparent 0%,transparent 73%,#000 100%);
+    mask-image:radial-gradient(ellipse 300px 42px at 100% 100%,transparent 0%,transparent 73%,#000 100%);
+  }
+}
+@media(prefers-reduced-motion:reduce){
+  body.home-page .landing-gradient-embed{-webkit-mask-image:none;mask-image:none}
+}
