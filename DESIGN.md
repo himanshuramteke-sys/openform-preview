@@ -143,3 +143,11 @@ Openform is an open, community-first index of useful design resources and visual
 - Corrected select padding, arrow alignment, hover/focus styles, and theme-specific option colours.
 - Simplified card metadata: category stays on the preview; the duplicate category badge is removed from the info row, and the format appears as a compact badge in that right-side position.
 - The card arrow appears on hover and keyboard focus rather than permanently on every card.
+
+
+## 1.7 — Homepage alignment, typography and rotating sample
+- Aligned the desktop navigation start with the headline's left edge using a shared column rhythm.
+- Removed the decorative dot at the far right of the intro and rewrote the philosophy copy to clarify the collection's value.
+- Moved the author credit to the bottom-right beside the preferences control.
+- The featured sample rotates through six studies every five seconds. Rotation pauses on hover/focus and when the tab is hidden; reduced-motion users keep the static first sample.
+- Restored Cormorant Garamond for display typography and DM Sans for interface text. Increased visible homepage text sizes by 2px with responsive adjustments.

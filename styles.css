@@ -1233,3 +1233,103 @@ body.home-page.dark .landing-grain{opacity:.12;mix-blend-mode:soft-light}
   body.home-page .landing-gradient-base,body.home-page .landing-orb{animation:none!important}
 }
 @media(forced-colors:active){.landing-gradient-embed{display:none!important}}
+
+
+/* Homepage annotated refinement: align the nav with the headline's left edge. */
+@media(min-width:761px){
+  .landing-header{grid-template-columns:minmax(0,38%) minmax(100px,19.5%) minmax(0,1fr) max-content;gap:clamp(16px,1.9vw,30px)}
+  .landing-nav{min-width:0}
+  .landing-intro{grid-template-columns:minmax(0,.95fr) minmax(0,1fr);gap:clamp(20px,5vw,100px)}
+  .landing-facts{padding-top:30px}
+}
+.landing-signal{display:none!important}
+.landing-philosophy-lead{max-width:36ch}
+.landing-philosophy-copy{max-width:47ch}
+.landing-credit{margin-left:auto}
+.landing-footer{justify-content:flex-end}
+.landing-preview-art{transition:opacity .22s ease,transform .22s ease,box-shadow .22s ease}
+.landing-preview-art.is-changing{opacity:0;transform:scale(.985)}
+.landing-preview-art.scene-soft{background:#d9e5f8}
+.landing-preview-art.scene-paper{background:#dcd6f7}
+.landing-paper-disc{left:8%;top:15%;width:58%;aspect-ratio:1;border-radius:50%;background:#d5f58e}
+.landing-paper-arch{right:8%;top:13%;width:34%;height:80%;border-radius:55% 55% 0 0;background:#f58e7d}
+.landing-paper-cut{left:37%;top:19%;width:34%;height:67%;background:#466be4;transform:rotate(35deg)}
+.landing-paper-pearl{right:13%;top:20%;width:8%;aspect-ratio:1;border-radius:50%;background:#fffdf5}
+.landing-preview-art.scene-orbit{background:#17213b}
+.landing-orbit-ring{position:absolute;display:block;left:24%;top:12%;width:52%;height:76%;border:1.5px solid #b7e2ee;border-radius:50%}
+.landing-orbit-ring.orbit-one{transform:rotate(0deg)}
+.landing-orbit-ring.orbit-two{transform:rotate(58deg)}
+.landing-orbit-ring.orbit-three{transform:rotate(-58deg)}
+.landing-orbit-center{position:absolute;left:41%;top:35%;width:18%;aspect-ratio:1;border-radius:50%;background:#5572e9}
+.landing-orbit-core{position:absolute;left:46%;top:44%;width:8%;aspect-ratio:1;border-radius:50%;background:#d5f58e}
+.landing-orbit-satellite{position:absolute;left:72%;top:24%;width:5%;aspect-ratio:1;border-radius:50%;background:#ff8977}
+.landing-preview-art.scene-type{display:flex;align-items:center;justify-content:center;background:#dcd6f7}
+.landing-type-specimen{color:#f7f3ff;font:500 88px/.9 var(--serif);letter-spacing:-.065em}
+.landing-type-specimen span{color:#466be4;font-style:italic}
+.landing-type-ruler{position:absolute;left:12%;right:12%;bottom:24%;height:1px;background:rgba(31,49,77,.25)}
+.landing-preview-art.scene-ui{display:flex;align-items:center;justify-content:center;background:#d9e5f8}
+.landing-ui-window{position:absolute;inset:13% 10%;display:flex;flex-direction:column;align-items:flex-start;padding:9% 9%;background:#fffdf7;color:#171a22;box-shadow:0 5px 16px rgba(32,52,88,.1)}
+.landing-ui-dots{display:flex;gap:4px;margin-bottom:11%}
+.landing-ui-dots i{width:4px;height:4px;border-radius:50%;background:#ff8977}
+.landing-ui-dots i:nth-child(2){background:#d5f58e}.landing-ui-dots i:nth-child(3){background:#466be4}
+.landing-ui-overline{margin-bottom:7px;color:#777c86;font-size:8px;letter-spacing:.08em}
+.landing-ui-window strong{font:500 30px/.9 var(--sans);letter-spacing:-.06em}
+.landing-ui-action{margin-top:auto;padding:5px 8px;background:#151a24;color:#fff;font-size:9px}
+.landing-preview-art.scene-lines{background:#17213b}
+.landing-motion-line{position:absolute;left:-16%;width:132%;height:1.5px;border-radius:100%;background:#9bd6e7;transform-origin:center}
+.landing-motion-line.line-one{top:24%;transform:rotate(17deg)}
+.landing-motion-line.line-two{top:34%;transform:rotate(-10deg);background:#ff9d86}
+.landing-motion-line.line-three{top:44%;transform:rotate(7deg);background:#d6dcff}
+.landing-motion-line.line-four{top:55%;transform:rotate(-19deg);background:#95c6dc}
+.landing-motion-line.line-five{top:65%;transform:rotate(12deg);background:#a59dff}
+.landing-motion-line.line-six{top:76%;transform:rotate(-4deg);background:#e0f7d5}
+.landing-preview-art.scene-orbit .landing-preview-kicker,.landing-preview-art.scene-lines .landing-preview-kicker,.landing-preview-art.scene-orbit .landing-preview-caption,.landing-preview-art.scene-lines .landing-preview-caption{color:rgba(248,250,255,.78)}
+.landing-preview-art.scene-type .landing-preview-kicker,.landing-preview-art.scene-type .landing-preview-caption{color:rgba(24,35,58,.78)}
+.landing-preview-art.scene-ui .landing-preview-kicker,.landing-preview-art.scene-ui .landing-preview-caption{color:#5b6370}
+
+/* Keep Cormorant Garamond for display typography and DM Sans for interface text. Raise visible homepage type sizes by 2px. */
+.landing-wordmark{font-size:clamp(34px,calc(4vw + 2px),56px)}
+.landing-nav a{font-size:14px}
+.landing-nav a small{font-size:12px}
+.landing-header-note{font-size:12px}
+.landing-contact{font-size:14px}
+.landing-eyebrow{font-size:13px}
+.landing-philosophy-lead{font-size:16px}
+.landing-philosophy-copy{font-size:14px}
+.landing-facts{font-size:14px}
+.landing-status{font-size:13px}
+.landing-statement h1{font-family:var(--serif);font-size:clamp(52px,calc(6.65vw + 2px),104px);line-height:.87;letter-spacing:-.045em;font-weight:500}
+.landing-statement h1 span{font-family:var(--serif);font-style:italic;color:var(--landing-accent);opacity:1}
+.landing-project-link p{font-size:14px}
+.landing-project-link a{font-size:15px}
+.landing-preview-kicker,.landing-preview-caption{font-size:10px}
+.landing-preview-meta{font-size:14px}
+.landing-preview-meta span:last-child{font-size:11px}
+.landing-credit{font-size:12px}
+.landing-preferences-label{font-size:12px}
+@media(max-width:1050px){
+  .landing-wordmark{font-size:clamp(33px,calc(3.6vw + 2px),46px)}
+  .landing-nav a{font-size:14px}.landing-nav a small{font-size:11px}
+  .landing-header-note{font-size:11px}
+  .landing-statement h1{font-size:clamp(52px,calc(6.5vw + 2px),84px)}
+}
+@media(max-width:760px){
+  .landing-wordmark{font-size:clamp(32px,calc(7.8vw + 2px),44px)}
+  .landing-nav a{font-size:14px}.landing-contact{font-size:13px}
+  .landing-eyebrow{font-size:12px}
+  .landing-philosophy-lead{font-size:16px}.landing-philosophy-copy{font-size:14px}
+  .landing-facts{font-size:13px}.landing-status{font-size:12px}
+  .landing-statement h1{font-size:clamp(47px,calc(10.7vw + 2px),75px)}
+  .landing-project-link p{font-size:13px}.landing-project-link a{font-size:15px}
+  .landing-preview-kicker,.landing-preview-caption{font-size:9px}
+  .landing-preview-meta{font-size:13px}.landing-preview-meta span:last-child{font-size:10px}
+  .landing-credit{font-size:11px}.landing-preferences-label{font-size:11px}
+}
+@media(max-width:420px){
+  .landing-contact{font-size:12px}
+  .landing-statement h1{font-size:clamp(44px,calc(10.7vw + 2px),54px)}
+  .landing-project-link p{font-size:13px}
+  .landing-preview-kicker,.landing-preview-caption{font-size:9px}
+  .landing-preview-meta{font-size:13px}.landing-credit{font-size:11px}
+}
+@media(prefers-reduced-motion:reduce){.landing-preview-art,.landing-shape,.landing-preview-arrow{transition:none!important}}

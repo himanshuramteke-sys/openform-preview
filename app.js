@@ -266,4 +266,67 @@
   });
 
 
+  // Homepage featured sample: rotate through resource studies every five seconds.
+  // Pause while hovered/focused or the tab is hidden; reduced-motion users retain the first sample.
+  const landingPreview = $("#landingPreview");
+  const landingPreviewArt = $("#landingPreviewArt");
+  const landingPreviewTitle = $("#landingPreviewTitle");
+  const landingPreviewFormat = $("#landingPreviewFormat");
+  if (landingPreview && landingPreviewArt && landingPreviewTitle && landingPreviewFormat) {
+    const previewSlides = [
+      {id:"soft-forms",title:"Soft forms",format:"SVG / SAMPLE",scene:"scene-soft",kicker:"FORM STUDY / 001",caption:"GEOMETRY / LAYER / PLAY",art:'<span class="landing-shape landing-shape-disc"></span><span class="landing-shape landing-shape-cut"></span><span class="landing-shape landing-shape-ring"></span>'},
+      {id:"cut-paper-shapes",title:"Cut-paper shapes",format:"SVG / SAMPLE",scene:"scene-paper",kicker:"FORM STUDY / 002",caption:"CUT / FOLD / REPEAT",art:'<span class="landing-shape landing-paper-disc"></span><span class="landing-shape landing-paper-arch"></span><span class="landing-shape landing-paper-cut"></span><span class="landing-shape landing-paper-pearl"></span>'},
+      {id:"orbit-study",title:"Orbit study",format:"SVG / STUDY",scene:"scene-orbit",kicker:"FIELD STUDY / 003",caption:"ORBIT / FIELD / FOCUS",art:'<span class="landing-orbit-ring orbit-one"></span><span class="landing-orbit-ring orbit-two"></span><span class="landing-orbit-ring orbit-three"></span><span class="landing-orbit-center"></span><span class="landing-orbit-core"></span><span class="landing-orbit-satellite"></span>'},
+      {id:"type-study",title:"Type study",format:"SVG / STUDY",scene:"scene-type",kicker:"TYPE STUDY / 004",caption:"TYPE / SHAPE / RHYTHM",art:'<span class="landing-type-specimen">Aa<span>!</span></span><span class="landing-type-ruler"></span>'},
+      {id:"interface-pieces",title:"Interface pieces",format:"UI / STUDY",scene:"scene-ui",kicker:"INTERFACE STUDY / 005",caption:"A SMALL SYSTEM, IN USE",art:'<span class="landing-ui-window"><span class="landing-ui-dots"><i></i><i></i><i></i></span><span class="landing-ui-overline">YOUR SPACE, YOUR PACE</span><strong>Make room<br>for ideas.</strong><span class="landing-ui-action">Get started ↗</span></span>'},
+      {id:"motion-lines",title:"Motion lines",format:"SVG / STUDY",scene:"scene-lines",kicker:"MOTION STUDY / 006",caption:"RHYTHM / FLOW / FORM",art:'<span class="landing-motion-line line-one"></span><span class="landing-motion-line line-two"></span><span class="landing-motion-line line-three"></span><span class="landing-motion-line line-four"></span><span class="landing-motion-line line-five"></span><span class="landing-motion-line line-six"></span>'}
+    ];
+    let activePreviewIndex = 0;
+    let previewRotationTimer = null;
+    let previewFadeTimer = null;
+    const renderLandingPreview = (slide) => {
+      landingPreviewArt.className = "landing-preview-art " + slide.scene + " is-changing";
+      landingPreviewArt.innerHTML = '<span class="landing-preview-kicker">' + slide.kicker + '</span>' + slide.art + '<span class="landing-preview-caption">' + slide.caption + '</span><span class="landing-preview-arrow"><span class="mi mi-arrow-up-right" aria-hidden="true"></span></span>';
+      landingPreviewTitle.textContent = slide.title;
+      landingPreviewFormat.textContent = slide.format;
+      landingPreview.setAttribute("aria-label", "Explore the " + slide.title + " sample");
+      if (previewFadeTimer) window.clearTimeout(previewFadeTimer);
+      window.requestAnimationFrame(() => window.requestAnimationFrame(() => landingPreviewArt.classList.remove("is-changing")));
+    };
+    const previewReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const stopPreviewRotation = () => {
+      if (previewRotationTimer) window.clearInterval(previewRotationTimer);
+      previewRotationTimer = null;
+    };
+    const startPreviewRotation = () => {
+      stopPreviewRotation();
+      if (previewReducedMotion.matches) return;
+      previewRotationTimer = window.setInterval(() => {
+        if (document.visibilityState !== "visible" || landingPreview.matches(":hover, :focus-within")) return;
+        activePreviewIndex = (activePreviewIndex + 1) % previewSlides.length;
+        landingPreviewArt.classList.add("is-changing");
+        previewFadeTimer = window.setTimeout(() => renderLandingPreview(previewSlides[activePreviewIndex]), 180);
+      }, 5000);
+    };
+    landingPreview.addEventListener("mouseenter", stopPreviewRotation);
+    landingPreview.addEventListener("mouseleave", startPreviewRotation);
+    landingPreview.addEventListener("focusin", stopPreviewRotation);
+    landingPreview.addEventListener("focusout", (event) => {
+      if (!landingPreview.contains(event.relatedTarget)) startPreviewRotation();
+    });
+    previewReducedMotion.addEventListener?.("change", () => {
+      if (previewReducedMotion.matches) {
+        stopPreviewRotation();
+        activePreviewIndex = 0;
+        renderLandingPreview(previewSlides[0]);
+      } else startPreviewRotation();
+    });
+    document.addEventListener("visibilitychange", () => {
+      if (document.visibilityState !== "visible") stopPreviewRotation();
+      else startPreviewRotation();
+    });
+    startPreviewRotation();
+  }
+
+
 })();
