@@ -1342,3 +1342,130 @@ body.home-page.dark .landing-grain{opacity:.12;mix-blend-mode:soft-light}
 .landing-ui-overline{font-size:10px}
 .landing-ui-action{font-size:11px}
 .landing-ui-window strong{font-size:32px}
+
+
+/* Homepage-only alignment and interaction polish from the annotated review. */
+@media(min-width:761px){
+  /* Make the information column begin on the same vertical axis as the main headline. */
+  body.home-page .landing-intro{
+    grid-template-columns:minmax(0,39.7%) minmax(0,1fr);
+    gap:0;
+  }
+  /* Bring the resource preview and supporting text down to the footer-control baseline. */
+  body.home-page .landing-statement{padding-bottom:0}
+  body.home-page .landing-project-link{transform:translateY(clamp(18px,4.8vh,46px))}
+  body.home-page .landing-preview{position:relative;top:clamp(24px,5.2vh,48px)}
+}
+body.home-page .landing-signal{display:none!important}
+
+/* Navigation is text-only. Hover draws a clean, short underline with a slight lift. */
+body.home-page .landing-nav{gap:9px;padding-top:2px}
+body.home-page .landing-nav a{
+  position:relative;
+  display:inline-flex;
+  width:max-content;
+  align-items:center;
+  padding:3px 0 5px;
+  overflow:visible;
+  font-size:14px;
+  line-height:1.45;
+  transform:none;
+  color:var(--landing-ink);
+  transition:color .22s ease,transform .28s cubic-bezier(.2,.8,.2,1);
+}
+body.home-page .landing-nav a::after{
+  content:"";
+  position:absolute;
+  left:0;
+  right:0;
+  bottom:0;
+  height:1px;
+  background:currentColor;
+  transform:scaleX(0);
+  transform-origin:left center;
+  transition:transform .28s cubic-bezier(.2,.8,.2,1);
+}
+body.home-page .landing-nav a span{display:inline-flex;align-items:center;gap:5px}
+body.home-page .landing-nav a span i{font-size:11px;font-style:normal;opacity:.65;transition:transform .22s ease,opacity .22s ease}
+body.home-page .landing-nav a:hover,
+body.home-page .landing-nav a:focus-visible{color:var(--landing-accent);transform:translateX(3px)}
+body.home-page .landing-nav a:hover::after,
+body.home-page .landing-nav a:focus-visible::after{transform:scaleX(1)}
+body.home-page .landing-nav a:hover span i,
+body.home-page .landing-nav a:focus-visible span i{transform:translate(2px,-2px);opacity:1}
+
+/* A more distinctive index CTA: restrained glass capsule with its own moving arrow disc. */
+body.home-page .landing-contact{
+  gap:clamp(15px,1.6vw,23px);
+  min-height:48px;
+  padding:5px 6px 5px 19px;
+  border:1px solid rgba(255,255,255,.64);
+  border-radius:999px;
+  background:rgba(248,251,255,.56);
+  color:#141c2b;
+  box-shadow:0 8px 25px rgba(22,42,76,.08),inset 0 1px 0 rgba(255,255,255,.6);
+  -webkit-backdrop-filter:blur(16px) saturate(140%);
+  backdrop-filter:blur(16px) saturate(140%);
+  transition:transform .24s cubic-bezier(.2,.8,.2,1),background .24s ease,border-color .24s ease,box-shadow .24s ease;
+}
+body.home-page .landing-contact-label{font-size:14px;line-height:1.2;letter-spacing:-.01em}
+body.home-page .landing-contact-icon{
+  display:grid;place-items:center;
+  width:34px;height:34px;flex:0 0 34px;
+  border:1px solid rgba(20,28,43,.16);
+  border-radius:50%;
+  background:#141c2b;color:#f7f9fc;
+  transition:transform .24s cubic-bezier(.2,.8,.2,1),background .24s ease,color .24s ease,border-color .24s ease;
+}
+body.home-page .landing-contact-icon .mi{font-size:17px;transition:transform .24s ease}
+body.home-page .landing-contact:hover{
+  transform:translateY(-2px);
+  border-color:rgba(255,255,255,.94);
+  background:rgba(255,255,255,.78);
+  box-shadow:0 12px 32px rgba(22,42,76,.15),inset 0 1px 0 rgba(255,255,255,.8);
+}
+body.home-page .landing-contact:hover .landing-contact-icon{
+  transform:rotate(-5deg);
+  background:#315fd5;border-color:#315fd5;
+}
+body.home-page .landing-contact:hover .landing-contact-icon .mi{transform:translate(2px,-2px)}
+body.home-page.dark .landing-contact{
+  border-color:rgba(208,225,255,.28);
+  background:rgba(12,20,35,.52);
+  color:#f4f6fb;
+  box-shadow:0 8px 25px rgba(0,0,0,.12),inset 0 1px 0 rgba(255,255,255,.08);
+}
+body.home-page.dark .landing-contact:hover{background:rgba(18,32,54,.77);border-color:rgba(208,225,255,.52)}
+body.home-page.dark .landing-contact-icon{background:#d3e4ff;border-color:#d3e4ff;color:#101725}
+body.home-page.dark .landing-contact:hover .landing-contact-icon{background:#6e8ff3;border-color:#6e8ff3;color:#fff}
+
+/* The embedded Gradient Lab badge is inside a cross-origin iframe, so mask only its footer corner. */
+body.home-page .landing-watermark-mask{
+  position:absolute;
+  z-index:4;
+  right:0;
+  bottom:0;
+  width:min(320px,23vw);
+  height:32px;
+  pointer-events:none;
+  background:linear-gradient(90deg,rgba(105,195,207,0) 0%,rgba(105,195,207,.64) 36%,rgba(91,177,194,.96) 100%);
+}
+body.home-page.dark .landing-watermark-mask{
+  background:linear-gradient(90deg,rgba(4,10,20,0) 0%,rgba(4,10,20,.69) 36%,rgba(4,10,20,.94) 100%);
+}
+@media(max-width:760px){
+  body.home-page .landing-watermark-mask{width:min(280px,58vw);height:27px}
+  body.home-page .landing-contact{min-height:42px;padding:4px 5px 4px 13px;gap:9px}
+  body.home-page .landing-contact-label{font-size:13px}
+  body.home-page .landing-contact-icon{width:30px;height:30px;flex-basis:30px}
+  body.home-page .landing-nav{gap:12px}
+  body.home-page .landing-nav a{font-size:14px}
+}
+@media(max-width:520px){
+  body.home-page .landing-watermark-mask{width:62vw;height:25px}
+  body.home-page .landing-contact{max-width:none}
+}
+@media(prefers-reduced-motion:reduce){
+  body.home-page .landing-nav a,body.home-page .landing-nav a::after,body.home-page .landing-nav a span i,
+  body.home-page .landing-contact,body.home-page .landing-contact-icon,body.home-page .landing-contact-icon .mi{transition:none!important}
+}
